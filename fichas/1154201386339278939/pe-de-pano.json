@@ -1,0 +1,23 @@
+{
+  "nome": "pe de pano",
+  "nivel": 10,
+  "pericias": [
+    "Atuação",
+    "Cavalgar",
+    "Intimidação",
+    "Investigação"
+  ],
+  "habilidades": [
+    "Trespassar",
+    "Estilo Desarmado",
+    "Ataque Pesado",
+    "Estilo de Duas Armas"
+  ],
+  "autor": "1154201386339278939",
+  "historia": "🔮 PAPA LEGUAS PIRADO",
+  "imagem": "https://cdn.discordapp.com/ephemeral-attachments/1392652627707428996/1393051675635355768/Emblema_Celtico_com_Cavalo_Empinado.png?ex=6871c3f9&is=68707279&hm=9d7b144f6d0dd4f127593b536861c27edae2bdd661e9875276b4e4ef00010d16&",
+  "raca": "Humano",
+  "subraca": "Puro",
+  "origem": "Nobre",
+  "classe": "Clérigo"
+}

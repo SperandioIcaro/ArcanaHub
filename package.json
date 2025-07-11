@@ -1,0 +1,18 @@
+{
+  "name": "discord-oneshot",
+  "version": "1.0.0",
+  "description": "Bot oneshot no Discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy-commands": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^1.11.2",
+    "@discordjs/rest": "^2.5.1",
+    "discord-api-types": "^0.38.15",
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.2.0",
+    "fs-extra": "^11.3.0"
+  }
+}

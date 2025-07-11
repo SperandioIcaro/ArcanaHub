@@ -1,0 +1,23 @@
+{
+  "nome": "Poneizito",
+  "nivel": 20,
+  "pericias": [
+    "Atletismo",
+    "Acrobacia",
+    "Cavalgar",
+    "Adestramento"
+  ],
+  "habilidades": [
+    "Acuidade com Arma",
+    "Ataque Poderoso",
+    "Quebrar Aprimorado",
+    "Combate Defensivo"
+  ],
+  "autor": "1154201386339278939",
+  "historia": "🔮 PAPA LEGUAS PIRADO",
+  "imagem": "https://cdn.discordapp.com/ephemeral-attachments/1392652627707428996/1393051463986446478/ChatGPT_Image_10_de_jul._de_2025_15_36_11.png?ex=6871c3c6&is=68707246&hm=87fce5eb667004b570163b6a598b84b8fe6eac78669da981564b34af09c28b9f&",
+  "raca": "Halfling",
+  "subraca": "Elfo da Floresta",
+  "origem": "Ermitão",
+  "classe": "Bruxo"
+}
