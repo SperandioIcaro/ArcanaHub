@@ -1,8 +1,4 @@
-<img src="https://img.shields.io/static/v1?label=hello&message=world&color=green?style=plastic&logo=appveyor" />
-<img src="https://img.shields.io/static/v1?label=Status&message=Em%20Desenvolvimento&color=yellow&style=plastic" />
-<img src="https://img.shields.io/badge/Node.js-%20v18%2B-green?logo=node.js&logoColor=white" />
-<img src="https://img.shields.io/github/issues/SperandioIcaro/ArcanaHub?color=blue" />
-<img src="https://img.shields.io/github/license/SperandioIcaro/ArcanaHub?color=purple" />
+<img src="https://img.shields.io/static/v1?label=hello&message=world&color=green?style=plastic&logo=appveyor" /><img src="https://img.shields.io/static/v1?label=Status&message=Em%20Desenvolvimento&color=yellow&style=plastic" /><img src="https://img.shields.io/badge/Node.js-%20v18%2B-green?logo=node.js&logoColor=white" /><img src="https://img.shields.io/github/issues/SperandioIcaro/ArcanaHub?color=blue" /><img src="https://img.shields.io/github/license/SperandioIcaro/ArcanaHub?color=purple" />
 
 # ArcanaHub 🧙🏾✨
 
