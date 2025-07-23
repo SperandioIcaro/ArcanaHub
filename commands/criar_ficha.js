@@ -7,8 +7,8 @@ const {
 } = require("discord.js");
 const fs = require("fs-extra");
 const path = require("path");
-const racas = require("../mechanics/tormenta20/racas.json"); // array de raças
-const subracasAll = require("../mechanics/tormenta20/subracas.json"); // array de sub-raças
+const racas = require("../mechanics/tormenta20/racas.json");
+const subracasAll = require("../mechanics/tormenta20/subracas.json");
 
 let cachedMec = null;
 const temp = new Map();
@@ -34,31 +34,12 @@ async function carregarMecanica() {
       .readJson(path.join(__dirname, "..", "data", "equipamentos.json"))
       .catch(() => []);
     mec.experienciaPorNivel = {
-      1: 0,
-      2: 3000,
-      3: 6000,
-      4: 10000,
-      5: 15000,
-      6: 21000,
-      7: 28000,
-      8: 36000,
-      9: 45000,
-      10: 55000,
-      11: 66000,
-      12: 78000,
-      13: 91000,
-      14: 105000,
-      15: 120000,
-      16: 136000,
-      17: 153000,
-      18: 171000,
-      19: 190000,
-      20: 210000,
+      /* ... */
     };
     cachedMec = mec;
     return mec;
   } catch (err) {
-    console.error("[carregarMecanica] erro ao requerer/me lêr arquivos:", err);
+    console.error(err);
     return null;
   }
 }
@@ -69,26 +50,27 @@ async function salvarFicha(userId, ficha) {
   const mec = await carregarMecanica();
   const mod = (x) => Math.floor((x - 10) / 2);
 
-  // calcular vida
+  // Vida, mana, armadura, XP
   const classeObj = mec.CLASSES.find((c) => c.nome === ficha.classe) || {};
   ficha.vida_max = Math.max(
     1,
     (classeObj.pv_iniciais || 0) + mod(ficha.atributos.CON)
   );
   ficha.vida_atual = ficha.vida_max;
-
-  // calcular mana
   const chave = classeObj.atributo_chave?.[0] || "INT";
   ficha.mana_max = Math.max(
     0,
     (classeObj.pm_iniciais || 0) + mod(ficha.atributos[chave])
   );
   ficha.mana_atual = ficha.mana_max;
-
-  // armadura e XP
   ficha.armadura = 10 + mod(ficha.atributos.DES);
   ficha.xp = mec.experienciaPorNivel[ficha.nivel - 1] || 0;
   ficha.xp_max = ficha.nivel < 20 ? mec.experienciaPorNivel[ficha.nivel] : null;
+
+  // Deduplica arrays
+  ficha.equipamentos = [...new Set(ficha.equipamentos)];
+  ficha.habilidades_autom = [...new Set(ficha.habilidades_autom)];
+  ficha.pericias_autom = [...new Set(ficha.pericias_autom)];
 
   await fs.writeJson(path.join(dir, `${slugify(ficha.nome)}.json`), ficha, {
     spaces: 2,
@@ -161,21 +143,28 @@ function aplicarBeneficiosAutomaticos(data, mec) {
   const habilidades = new Set(data.habilidades_autom);
   const itens = new Set(data.equipamentos);
 
-  // aplicar perícias automáticas de classe e origem
+  // Perícias automáticas de classe e origem
   [
     ...(mec.CLASSES.find((c) => c.nome === data.classe)?.pericias_automaticas ||
       []),
     ...(mec.ORIGENS.find((o) => o.nome === data.origem)?.pericias || []),
   ].forEach((p) => pericias.add(p));
 
-  // aplicar habilidades automáticas (similar, adapte conforme seu JSON)
+  // Poder de origem como habilidade
+  const origemObj = mec.ORIGENS.find((o) => o.nome === data.origem);
+  if (origemObj?.poder) habilidades.add(origemObj.poder);
+
+  // Equipamentos de origem
+  if (Array.isArray(origemObj?.equipamento))
+    origemObj.equipamento.forEach((e) => itens.add(e));
+
+  // Habilidades automáticas de classe (sem poderes raciais aqui)
   [
     ...(mec.CLASSES.find((c) => c.nome === data.classe)
       ?.habilidades_automaticas || []),
-    ...(mec.ORIGENS.find((o) => o.nome === data.origem)?.habilidades || []),
   ].forEach((h) => habilidades.add(h));
 
-  // aplicar equipamentos automáticos (similar)
+  // Equipamentos automáticos de classe
   [
     ...(mec.CLASSES.find((c) => c.nome === data.classe)?.equipamentos || []),
   ].forEach((e) => itens.add(e));
@@ -189,7 +178,7 @@ function aplicarEquipamentosIniciais(data, mec) {
   const classeItems =
     mec.CLASSES.find((c) => c.nome === data.classe)?.equipamentos || [];
   classeItems.forEach((e) => data.equipamentos.push(e));
-  data.equipamentos.push("100 TO");
+  // Não mais adiciona "100 TO" aqui!
 }
 
 // Render functions
@@ -211,7 +200,7 @@ async function mostrarMetodoDistribuicao(interaction) {
   await interaction.reply({
     content: "Como distribuir 30 pontos?",
     components: [row],
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -240,44 +229,70 @@ async function mostrarAtributos(interaction, data) {
         .setCustomId("next")
         .setLabel("Próximo")
         .setStyle(ButtonStyle.Primary)
+        .setDisabled(data.pontosRestantes > 0)
     )
   );
-  await interaction.update({
-    content: `Atributos: ${JSON.stringify(data.atributos)}`,
+  await interaction.editReply({
+    content: `Atributos (${
+      data.pontosRestantes
+    } pontos restantes): ${JSON.stringify(data.atributos)}`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
 async function mostrarRoll(interaction, data, idx = 0) {
   const keys = ["FOR", "DES", "CON", "INT", "SAB", "CAR"];
-  if (idx >= keys.length) return mostrarRaca(interaction, data);
+  if (idx >= keys.length) {
+    const sess = temp.get(interaction.user.id);
+    sess.step = 3;
+    temp.set(interaction.user.id, sess);
+    return steps[3].render(interaction, data);
+  }
   const attr = keys[idx];
   const { rolls, total } = rolar4d6();
   data.atributos[attr] = total;
+  const used = data.rerolls[attr] || 0;
+  const remaining = Math.max(0, 2 - used);
   const row = new ActionRowBuilder().addComponents(
     new ButtonBuilder()
       .setCustomId(`reroll_${attr}_${idx}`)
-      .setLabel("Reroll")
-      .setStyle(ButtonStyle.Secondary),
+      .setLabel(remaining ? `Reroll (${remaining} rest.)` : "Reroll")
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(used >= 2),
     new ButtonBuilder()
       .setCustomId(`fix_${attr}_${idx}`)
       .setLabel(`Fixar ${total}`)
       .setStyle(ButtonStyle.Primary)
   );
-  await interaction.update({
+  await interaction.editReply({
     content: `${attr}: [${rolls.join(", ")}] = ${total}`,
     components: [row],
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
-function mostrarRaca(interaction, data) {
+async function mostrarRaca(interaction, data) {
+  // garante que sempre passamos string para slugify
+  const selectedRaceSlug = slugify(data.selecoes.raca || "");
+
   // filtragem de sub-raças (ou "Puro")
-  const todasSub = subracasAll.filter((sr) => sr.raca === data.selecoes.raca);
+  const todasSub = subracasAll.filter(
+    (sr) =>
+      typeof sr.nome === "string" &&
+      sr.nome.trim().length >= 1 &&
+      sr.nome.length <= 25 &&
+      slugify(sr.raca) === selectedRaceSlug
+  );
+
   const subracas = todasSub.length
     ? todasSub
-    : subracasAll.filter((sr) => sr.nome === "Puro");
+    : subracasAll.filter(
+        (sr) =>
+          typeof sr.nome === "string" &&
+          sr.nome === "Puro" &&
+          sr.nome.length <= 25
+      );
 
   // select de raças
   const selR = new StringSelectMenuBuilder()
@@ -286,12 +301,20 @@ function mostrarRaca(interaction, data) {
     .setMinValues(1)
     .setMaxValues(1)
     .addOptions(
-      racas.map((r) => ({
-        label: r.nome,
-        description: r.descricao.slice(0, 50),
-        value: r.nome,
-        default: r.nome === data.selecoes.raca,
-      }))
+      racas
+        .filter(
+          (r) =>
+            typeof r.nome === "string" &&
+            r.nome.trim().length >= 1 &&
+            r.nome.length <= 25 &&
+            typeof r.descricao === "string"
+        )
+        .map((r) => ({
+          label: r.nome.slice(0, 25),
+          description: r.descricao.slice(0, 50),
+          value: r.nome.slice(0, 25),
+          default: r.nome === data.selecoes.raca,
+        }))
     );
 
   // select de sub-raças
@@ -301,12 +324,20 @@ function mostrarRaca(interaction, data) {
     .setMinValues(1)
     .setMaxValues(1)
     .addOptions(
-      subracas.map((sr) => ({
-        label: sr.nome,
-        description: sr.descricao.slice(0, 50),
-        value: sr.nome,
-        default: sr.nome === data.selecoes.subraca,
-      }))
+      subracas
+        .filter(
+          (sr) =>
+            typeof sr.nome === "string" &&
+            sr.nome.trim().length >= 1 &&
+            sr.nome.length <= 25 &&
+            typeof sr.descricao === "string"
+        )
+        .map((sr) => ({
+          label: sr.nome.slice(0, 25),
+          description: sr.descricao.slice(0, 50),
+          value: sr.nome.slice(0, 25),
+          default: sr.nome === data.selecoes.subraca,
+        }))
     );
 
   // botão Avançar (só habilita quando raça E sub-raça estiverem definidas)
@@ -316,7 +347,7 @@ function mostrarRaca(interaction, data) {
     .setStyle(ButtonStyle.Primary)
     .setDisabled(!data.selecoes.raca || !data.selecoes.subraca);
 
-  // monta as linhas — **sem** row vazia!
+  // monta as linhas — sem row vazia!
   const rows = [
     new ActionRowBuilder().addComponents(selR),
     new ActionRowBuilder().addComponents(selSR),
@@ -330,10 +361,10 @@ function mostrarRaca(interaction, data) {
     ? `🧬 **${data.selecoes.raca}**: ${data.descricaoRaca}`
     : "";
 
-  return interaction.update({
+  return interaction.editReply({
     content: `${textoDesc}\n\nSelecione raça e sub-raça:`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // EPHEMERAL
   });
 }
 
@@ -352,12 +383,12 @@ async function mostrarClasse(interaction, data) {
     ),
   ];
 
-  return interaction.update({
+  return interaction.editReply({
     content:
       `${data.descricaoClasse || ""}\n\n` +
       `3/8 – Classe: ${data.classe || "-"}`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -376,17 +407,32 @@ async function mostrarOrigem(interaction, data) {
     ),
   ];
 
-  return interaction.update({
+  return interaction.editReply({
     content:
       `${data.descricaoOrigem || ""}\n\n` +
       `4/8 – Origem: ${data.origem || "-"}`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
 async function mostrarDivindade(interaction, data) {
   const mec = temp.get(interaction.user.id).mec;
+  const divObj = mec.DIVINDADES.find((d) => d.nome === data.divindade) || {
+    poderes_concedidos: [],
+  };
+
+  // aviso caso sem poderes
+  if (!divObj.poderes_concedidos.length) {
+    await interaction.followUp({
+      content: "⚠️ Esta divindade não concede poderes.",
+      flags: 64,
+    });
+  }
+
+  // pega descrição (ou padrão)
+  const desc = data.descricaoDivindade || "Não siga nenhuma divindade.";
+
   const opts = [
     { nome: "Nenhuma", descricao: "Não siga nenhuma divindade" },
     ...mec.DIVINDADES,
@@ -403,12 +449,12 @@ async function mostrarDivindade(interaction, data) {
     ),
   ];
 
-  return interaction.update({
+  return interaction.editReply({
+    // agora exibimos a descrição antes do passo
     content:
-      `${data.descricaoDivindade || ""}\n\n` +
-      `5/8 – Divindade: ${data.divindade || "Nenhuma"}`,
+      `🪧 ${desc}\n\n` + `5/8 – Divindade: ${data.divindade || "Nenhuma"}`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -480,7 +526,7 @@ async function mostrarPericias(interaction, data) {
     ? `${data.descricaoPericias}\n\n`
     : autoText;
 
-  await interaction.update({
+  await interaction.editReply({
     content:
       descText +
       `6/8 – Perícias (${data.pericias.length}/${data.limite_pericias})\n\n` +
@@ -488,7 +534,7 @@ async function mostrarPericias(interaction, data) {
         ? `Selecione até ${restante} perícia(s):`
         : `Nenhuma perícia disponível para seleção.`),
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -512,9 +558,10 @@ async function mostrarHabilidades(interaction, data) {
 
   // Só adiciona o select se houver opções e limite > 0
   if (slice.length > 0 && restante > 0) {
+    const limite = calcularLimiteHabilidades(data, mec);
     const select = criarSelect(
       "sel_7_hab",
-      `Habilidades (${data.habilidades.length}/${data.limite_habilidades})`,
+      `Habilidades (${data.habilidades.length}/${limite})`,
       slice,
       Math.max(1, Math.min(restante, 10)),
       null,
@@ -562,7 +609,7 @@ async function mostrarHabilidades(interaction, data) {
     ? `${data.descricaoHabilidades}\n\n`
     : autoText;
 
-  await interaction.update({
+  await interaction.editReply({
     content:
       descText +
       `7/8 – Habilidades (${data.habilidades.length}/${data.limite_habilidades})\n\n` +
@@ -570,7 +617,7 @@ async function mostrarHabilidades(interaction, data) {
         ? `Selecione até ${restante} poder(es):`
         : `Nenhuma habilidade disponível para seleção.`),
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -628,10 +675,10 @@ async function mostrarEquipamentos(interaction, data) {
     );
   }
 
-  await interaction.update({
+  await interaction.editReply({
     content: `8/8 – Equipamentos (${data.equipamentos.length})`,
     components: rows,
-    ephemeral: true,
+    flags: 64, // 64 = EPHEMERAL
   });
 }
 
@@ -651,55 +698,66 @@ function distribuirAleatorio(data) {
 }
 
 function aplicarBonusRacial(data, mec) {
-  // Aplica modificadores de atributo da raça
-  const racaObj = mec.RACAS.find((r) => r.nome === data.selecoes.raca);
-  if (racaObj && Array.isArray(racaObj.modificadores_atributo)) {
+  // 1️⃣ Busco objetos de raça e sub-raça
+  const racaObj = mec.RACAS.find((r) => r.nome === data.selecoes.raca) || {};
+  const subracaObj = mec.SUBRACAS.find(
+    (sr) => sr.nome === data.selecoes.subraca && sr.raca === data.selecoes.raca
+  ) || { vantagens: [] };
+
+  // 2️⃣ Aplico modificadores de atributo da raça
+  if (Array.isArray(racaObj.modificadores_atributo)) {
     racaObj.modificadores_atributo.forEach((mod) => {
       if (mod.atributo === "QUALQUER") {
-        // Humanos: distribui pontos em atributos à escolha (aqui, distribui em ordem)
+        // humanos, lógica especial…
         let count = mod.quantidade || 1;
         const keys = ["FOR", "DES", "CON", "INT", "SAB", "CAR"];
         for (let i = 0; i < count; i++) {
-          // Adiciona +1 ao primeiro atributo com menor valor
-          let menor = keys[0];
-          for (const k of keys) {
-            if (data.atributos[k] < data.atributos[menor]) menor = k;
-          }
+          const menor = keys.reduce((a, b) =>
+            data.atributos[a] < data.atributos[b] ? a : b
+          );
           data.atributos[menor] += mod.valor;
         }
-      } else if (data.atributos[mod.atributo] !== undefined) {
+      } else if (data.atributos[mod.atributo] != null) {
         data.atributos[mod.atributo] += mod.valor;
       }
     });
   }
 
-  // Aplica modificadores de atributo da sub-raça (vantagens do tipo atributo)
-  const subracaObj = mec.SUBRACAS.find(
-    (sr) => sr.nome === data.selecoes.subraca && sr.raca === data.selecoes.raca
-  );
-  if (subracaObj && Array.isArray(subracaObj.vantagens)) {
-    subracaObj.vantagens.forEach((v) => {
-      if (v.tipo === "atributo" && data.atributos[v.atributo] !== undefined) {
+  // 3️⃣ Aplico modificadores de atributo da sub‑raça
+  subracaObj.vantagens
+    .filter((v) => v.tipo === "atributo")
+    .forEach((v) => {
+      if (data.atributos[v.atributo] != null) {
         data.atributos[v.atributo] += v.valor;
       }
     });
+
+  // 4️⃣ Coleto poderes raciais e insiro em habilidades_autom
+  if (Array.isArray(racaObj.poderes_raciais)) {
+    data.habilidades_autom.push(...racaObj.poderes_raciais);
   }
 
-  // Aplica poderes raciais da raça
-  if (racaObj && Array.isArray(racaObj.poderes_raciais)) {
-    data.poderes_raciais = racaObj.poderes_raciais.slice();
-  } else {
-    data.poderes_raciais = [];
-  }
+  // 5️⃣ Cadastro lista final deduplicada de habilidades e perícias
+  data.habilidades_autom = [...new Set(data.habilidades_autom)];
+  data.pericias_autom = [...new Set(data.pericias_autom)];
+}
 
-  // Aplica vantagens da sub-raça (habilidades e resistências)
-  if (subracaObj && Array.isArray(subracaObj.vantagens)) {
-    data.vantagens_subraca = subracaObj.vantagens
-      .filter((v) => v.tipo !== "atributo")
-      .map((v) => v.descricao || "");
-  } else {
-    data.vantagens_subraca = [];
-  }
+function aplicarPoderesDivinos(data, mec) {
+  const div = mec.DIVINDADES.find((d) => d.nome === data.divindade);
+  if (!div) return;
+
+  const devotos = div.devotos || [];
+  const aceitaQualquer = devotos.includes("Qualquer um");
+  const ehDevoto = aceitaQualquer || devotos.includes(data.classe);
+
+  if (!ehDevoto) return; // não recebe poderes
+
+  // adiciona cada poder concedido
+  (div.poderes_concedidos || []).forEach((p) => {
+    if (!data.habilidades_autom.includes(p)) {
+      data.habilidades_autom.push(p);
+    }
+  });
 }
 
 // Steps array
@@ -776,14 +834,14 @@ module.exports = {
     if (interaction.channel.name !== "fichas")
       return interaction.reply({
         content: "❌ Apenas em #fichas",
-        ephemeral: true,
+        flags: 64, // 64 = EPHEMERAL
       });
 
     const mec = await carregarMecanica();
     if (!mec)
       return interaction.reply({
         content: "❌ Falha ao carregar mecânica",
-        ephemeral: true,
+        flags: 64, // 64 = EPHEMERAL
       });
 
     const data = {
@@ -831,6 +889,7 @@ module.exports = {
   },
 
   async handleComponent(interaction) {
+    await interaction.deferUpdate().catch(() => {});
     const isDeferredSafe =
       interaction.customId.startsWith("remove:") ||
       interaction.customId === "method_roll" ||
@@ -873,17 +932,24 @@ module.exports = {
       const id = interaction.customId;
       if (id.startsWith("reroll_")) {
         const [, attr, idx] = id.split("_");
-        data.rerolls[attr] = (data.rerolls[attr] || 0) + 1;
+        const count = data.rerolls[attr] || 0;
+        if (count >= 2) {
+          // já bateu o limite, só re-renderiza sem incrementar
+          return mostrarRoll(interaction, data, parseInt(idx));
+        }
+        data.rerolls[attr] = count + 1;
         return mostrarRoll(interaction, data, parseInt(idx));
       }
       if (id.startsWith("fix_")) {
         const [, , idx] = id.split("_");
-        return mostrarRoll(interaction, data, parseInt(idx) + 1);
+        const nextIdx = parseInt(idx, 10) + 1;
+        return mostrarRoll(interaction, data, nextIdx);
       }
     }
 
     // Menu de seleção
     if (interaction.isStringSelectMenu()) {
+      await interaction.deferUpdate().catch(() => {});
       const id = interaction.customId;
       const vals = interaction.values;
 
@@ -918,9 +984,15 @@ module.exports = {
             "Descrição não disponivel";
 
           const classeObj = mec.CLASSES.find((c) => c.nome === vals[0]);
+          if (Array.isArray(classeObj.pericias_treinadas)) {
+            classeObj.pericias_treinadas.forEach((p) => {
+              if (!data.pericias_autom.includes(p)) data.pericias_autom.push(p);
+            });
+          }
           const descClasse =
             classeObj?.descricao || "Descrição não disponível.";
 
+          data.limite_pericias = calcularLimitePericias(data, mec);
           return mostrarClasse(interaction, data);
 
         case "sel_4_origem":
@@ -941,6 +1013,7 @@ module.exports = {
           data.divindade = vals[0];
           aplicarBeneficiosAutomaticos(data, mec);
           aplicarEquipamentosIniciais(data, mec);
+          aplicarPoderesDivinos(data, mec);
 
           data.descricaoDivindade =
             mec.DIVINDADES.find((d) => d.nome === vals[0])?.descricao ||
@@ -1025,7 +1098,7 @@ module.exports = {
         if (!steps[step].validate(data)) {
           return interaction.followUp({
             content: `❌ Preencha ${steps[step].name}`,
-            ephemeral: true,
+            flags: 64, // 64 = EPHEMERAL
           });
         }
 
@@ -1036,11 +1109,22 @@ module.exports = {
 
         // Só finalizar após a última etapa (index 9, supondo 10 passos)
         if (step > steps.length - 1) {
+          // ➤ Reaplica bônus de raça/sub-raça (atributos + poderes raciais)
+          aplicarBonusRacial(data, mec);
+
+          // ➤ Reaplica benefícios de classe e origem (perícias, habilidades e equipamentos)
           aplicarBeneficiosAutomaticos(data, mec);
           aplicarEquipamentosIniciais(data, mec);
+          aplicarPoderesDivinos(data, mec);
+
+          // ➤ Só adiciona 100 TO **uma vez**, à carteira
+          data.carteira.TO = (data.carteira.TO || 0) + 100;
+
+          // ➤ Persiste a ficha
           await salvarFicha(interaction.user.id, data);
           temp.delete(interaction.user.id);
-          return interaction.reply({
+
+          return interaction.editReply({
             content: `✅ Ficha de **${data.nome}** criada com sucesso!`,
             components: [],
           });
@@ -1071,52 +1155,64 @@ module.exports = {
 
       // Paginação para pericias, habilidades e equipamentos
       if ((act === "mais" || act === "menos") && param.startsWith("page")) {
-        const key = param.split(":")[1];
+        const [_, key] = interaction.customId.split(":");
         const pageKey = `pagina_${key}`;
 
-        let list = [];
-
         if (key === "pericias") {
-          list = mec.PERICIAS.filter(
+          const all = mec.PERICIAS.filter(
             (p) => !data.pericias_autom.includes(p.nome)
           );
+          const maxPage = Math.max(0, Math.ceil(all.length / 10) - 1);
+          if (act === "mais" && data[pageKey] < maxPage) data[pageKey]++;
+          if (act === "menos" && data[pageKey] > 0) data[pageKey]--;
+          return mostrarPericias(interaction, data);
         } else if (key === "habilidades") {
-          list = mec.HABILIDADES.filter(
+          const all = mec.HABILIDADES.filter(
             (h) => !data.habilidades_autom.includes(h.nome)
           );
+          const maxPage = Math.max(0, Math.ceil(all.length / 10) - 1);
+          if (act === "mais" && data[pageKey] < maxPage) data[pageKey]++;
+          if (act === "menos" && data[pageKey] > 0) data[pageKey]--;
+          return mostrarHabilidades(interaction, data);
         } else if (key === "equipamentos") {
-          list = mec.EQUIPAMENTOS;
-        } else {
-          console.warn(
-            "[criar_ficha.js][handleComponent] chave paginação desconhecida:",
-            key
-          );
+          const list = mec.EQUIPAMENTOS;
+          const maxPage = Math.max(0, Math.ceil(list.length / 10) - 1);
+          if (act === "mais" && data[pageKey] < maxPage) data[pageKey]++;
+          if (act === "menos" && data[pageKey] > 0) data[pageKey]--;
+          return steps[step].render(interaction, data);
         }
-
-        const maxPage = Math.max(0, Math.ceil(list.length / 10) - 1);
-
-        if (act === "mais" && data[pageKey] < maxPage) data[pageKey]++;
-        if (act === "menos" && data[pageKey] > 0) data[pageKey]--;
-
-        return steps[step].render(interaction, data);
       }
 
       // Remoção de item de lista (perícias, habilidades, equipamentos)
       if (act === "remove") {
-        const idx = param.indexOf(":");
-        const type = param.slice(0, idx);
-        const item = param.slice(idx + 1);
-
+        const [, type, item] = interaction.customId.split(":");
+        if (type === "pericias") {
+          data.pericias = data.pericias.filter((x) => x !== item);
+          return mostrarPericias(interaction, data);
+        }
+        if (type === "habilidades") {
+          data.habilidades = data.habilidades.filter((x) => x !== item);
+          return mostrarHabilidades(interaction, data);
+        }
         if (Array.isArray(data[type])) {
           data[type] = data[type].filter((x) => x !== item);
-        } else {
-          console.warn(
-            `[criar_ficha.js][handleComponent] tipo para remoção inválido: ${type}`
-          );
         }
-
         return steps[step].render(interaction, data);
       }
     }
+
+    // // Ao finalizar:
+    // if (step > steps.length - 1) {
+    //   aplicarBeneficiosAutomaticos(data, mec);
+    //   aplicarEquipamentosIniciais(data, mec);
+    //   // Só adiciona 100 TO na carteira:
+    //   data.carteira.TO = (data.carteira.TO || 0) + 100;
+    //   await salvarFicha(interaction.user.id, data);
+    //   temp.delete(interaction.user.id);
+    //   return interaction.editReply({
+    //     content: `✅ Ficha de **${data.nome}** criada com sucesso!`,
+    //     components: [],
+    //   });
+    // }
   },
 };
