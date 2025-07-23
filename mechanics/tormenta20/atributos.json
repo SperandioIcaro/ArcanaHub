@@ -1,0 +1,32 @@
+[
+  {
+    "nome": "Força",
+    "sigla": "FOR",
+    "descricao": "Representa o vigor físico, a capacidade de levantar peso, causar dano em combate corpo a corpo e forçar portas ou paredes."
+  },
+  {
+    "nome": "Destreza",
+    "sigla": "DES",
+    "descricao": "Reflete a agilidade, reflexos e equilíbrio do personagem. É usada para ataques à distância, esquiva e perícias como Acrobacia e Furtividade."
+  },
+  {
+    "nome": "Constituição",
+    "sigla": "CON",
+    "descricao": "Indica a saúde e resistência do personagem. Afeta os pontos de vida e testes de resistência contra doenças e venenos."
+  },
+  {
+    "nome": "Inteligência",
+    "sigla": "INT",
+    "descricao": "Mede a memória e raciocínio. Importante para conhecimento, perícias intelectuais e magias de algumas classes."
+  },
+  {
+    "nome": "Sabedoria",
+    "sigla": "SAB",
+    "descricao": "Relacionada à percepção e intuição. Influencia a percepção, resistência mental e algumas magias."
+  },
+  {
+    "nome": "Carisma",
+    "sigla": "CAR",
+    "descricao": "Representa a força de personalidade, magnetismo e habilidade social. Usado para liderar, convencer e conjurar magias por algumas classes."
+  }
+]

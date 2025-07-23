@@ -1,95 +1,109 @@
+// commands/xp.js
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('fs-extra');
 const path = require('path');
 
-// Tabela de XP baseada no Tormenta 20
-const xpTable = [
-  0,     // Nível 1
-  1000,  // Nível 2
-  3000,  // Nível 3
-  6000,  // Nível 4
-  10000, // Nível 5
-  15000, // Nível 6
-  21000, // Nível 7
-  28000, // Nível 8
-  36000, // Nível 9
-  45000, // Nível 10
-  55000, // Nível 11
-  66000, // Nível 12
-  78000, // Nível 13
-  91000, // Nível 14
-  105000 // Nível 15
-];
-
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('xp')
-    .setDescription('Adiciona XP à sua ficha com progressão automática de nível.')
-    .addIntegerOption(opt =>
-      opt.setName('quantidade')
-        .setDescription('Quantidade de XP a adicionar')
-        .setRequired(true)
+    .setDescription('Gerencia seu XP e sobe de nível automaticamente.')
+    .addSubcommand(sub =>
+      sub
+        .setName('mostrar')
+        .setDescription('Mostra seu XP atual e quanto falta para o próximo nível.')
+    )
+    .addSubcommand(sub =>
+      sub
+        .setName('adicionar')
+        .setDescription('Adiciona XP e sobe de nível quando atingir o limite.')
+        .addIntegerOption(opt =>
+          opt
+            .setName('quantidade')
+            .setDescription('XP a adicionar (deve ser positivo).')
+            .setRequired(true)
+        )
     ),
 
   async execute(interaction) {
     const userId = interaction.user.id;
-    const filePath = path.join(__dirname, `../fichas/${userId}.json`);
 
-    if (!fs.existsSync(filePath)) {
-      return await interaction.reply({ content: '❌ Você ainda não tem uma ficha.', ephemeral: true });
+    // 1️⃣ Descobre qual ficha está ativa
+    const ativasPath = path.join(__dirname, '../fichas/ativas.json');
+    const ativas = await fs.readJson(ativasPath).catch(() => ({}));
+    const ativa = ativas[userId];
+    if (!ativa) {
+      return interaction.reply({ content: '❌ Você ainda não selecionou uma ficha.', ephemeral: true });
     }
 
-    const ficha = await fs.readJson(filePath);
-    const xpGanho = interaction.options.getInteger('quantidade');
+    // 2️⃣ Carrega a ficha do usuário
+    const fichaPath = path.join(
+      __dirname,
+      '../fichas',
+      ativa.mecanica,
+      userId,
+      ativa.arquivo
+    );
+    if (!await fs.pathExists(fichaPath)) {
+      return interaction.reply({ content: '❌ Ficha ativa não encontrada.', ephemeral: true });
+    }
+    const ficha = await fs.readJson(fichaPath);
 
-    ficha.xp += xpGanho;
+    // 3️⃣ Carrega a mecânica (pra pegar a tabela de XP)
+    const mecPath = path.join(__dirname, '..', 'mechanics', ativa.mecanica, 'index.js');
+    const mec = require(mecPath);
+    const xpTable = mec.experienciaPorNivel || {};
 
-    let novoNivel = ficha.nivel;
-    let mensagensNivel = [];
+    const sub = interaction.options.getSubcommand();
 
-    // Verifica o novo nível com base na tabela
-    for (let i = xpTable.length - 1; i >= 0; i--) {
-      if (ficha.xp >= xpTable[i]) {
-        novoNivel = i + 1;
-        break;
-      }
+    if (sub === 'mostrar') {
+      // apenas exibe
+      const embed = new EmbedBuilder()
+        .setTitle('📊 Seu XP')
+        .setDescription(
+          `Nível **${ficha.nivel}**\n` +
+          `XP: **${ficha.xp}/${ficha.xp_max}**\n` +
+          `Faltam **${Math.max(ficha.xp_max - ficha.xp, 0)}** para o próximo nível`
+        )
+        .setColor(0x00cc99);
+      return interaction.reply({ embeds: [embed], ephemeral: true });
     }
 
-    // Se subiu de nível
-    if (novoNivel > ficha.nivel) {
-      mensagensNivel.push(`⬆️ Você subiu para o nível **${novoNivel}**!`);
-
-      // Tormenta 20: a cada 4 níveis, +1 em dois atributos diferentes
-      const ganhosAtributos = Math.floor(novoNivel / 4) - Math.floor(ficha.nivel / 4);
-      if (ganhosAtributos > 0) {
-        const atributos = Object.keys(ficha.atributos);
-        for (let i = 0; i < ganhosAtributos * 2; i++) {
-          const atrIndex = i % atributos.length;
-          ficha.atributos[atributos[atrIndex]] += 1;
-        }
-        mensagensNivel.push(`🎁 Você ganhou **+1 em dois atributos** por cada 4 níveis.`);
-      }
-
-      ficha.nivel = novoNivel;
+    // sub === 'adicionar'
+    let gain = interaction.options.getInteger('quantidade');
+    if (gain <= 0) {
+      return interaction.reply({ content: '❌ A quantidade deve ser positiva.', ephemeral: true });
     }
 
-    ficha.xp_next = xpTable[ficha.nivel] || ficha.xp + 10000; // se estiver além da tabela
+    const log = [];
+    ficha.xp += gain;
+    log.push(`+${gain} XP`);
 
-    await fs.writeJson(filePath, ficha, { spaces: 2 });
+    // enquanto bater no limite, sobe de nível
+    while (ficha.nivel < 20 && ficha.xp >= ficha.xp_max) {
+      ficha.nivel++;
+      log.push(`🎉 Subiu para nível ${ficha.nivel}!`);
+      // novo xp_max é o threshold para o próximo nível
+      ficha.xp_max = xpTable[ficha.nivel] ?? ficha.xp_max;
+    }
 
+    // se já chegou no 20, não deixa ultrapassar
+    if (ficha.nivel === 20 && ficha.xp > ficha.xp_max) {
+      ficha.xp = ficha.xp_max;
+    }
+
+    // salva de volta
+    await fs.writeJson(fichaPath, ficha, { spaces: 2 });
+
+    // monta embed final
     const embed = new EmbedBuilder()
-      .setTitle('🌟 XP Adicionado')
-      .setDescription(`Você ganhou **${xpGanho} XP**.`)
-      .addFields(
-        { name: '🧙 Nível Atual', value: `${ficha.nivel}`, inline: true },
-        { name: '📈 XP Total', value: `${ficha.xp} / ${ficha.xp_next}`, inline: true }
+      .setTitle('✨ XP Atualizado')
+      .setDescription(
+        log.join('\n') +
+        `\n\nNível: **${ficha.nivel}**\n` +
+        `XP: **${ficha.xp}/${ficha.xp_max}**`
       )
-      .setColor(0xffff00);
+      .setColor(0x00cc99);
 
-    if (mensagensNivel.length > 0) {
-      embed.addFields({ name: '🎉 Progressão', value: mensagensNivel.join('\n') });
-    }
-
-    await interaction.reply({ embeds: [embed], ephemeral: true });
+    return interaction.reply({ embeds: [embed], ephemeral: true });
   }
 };

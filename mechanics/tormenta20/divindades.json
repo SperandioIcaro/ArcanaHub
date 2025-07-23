@@ -1,0 +1,201 @@
+[
+  {
+    "nome": "Aharadak",
+    "crencas_objetivos": "Reverenciar a Tormenta, apregoar sua inevitabilidade e espalhar loucura e perversão.",
+    "simbolo_sagrado": "Um olho macabro de pupila vertical cercado de espinhos.",
+    "canalizar_energia": "Negativa",
+    "arma_preferida": "Corrente de espinhos",
+    "devotos": ["Qualquer um"],
+    "poderes_concedidos": ["Afinidade com a Tormenta", "Êxtase da Loucura", "Percepção Temporal", "Rejeição Divina"],
+    "obrigacoes_restricoes": "Role 1d6 no início de cena: resultado ímpar fascina o devoto em devaneios, mesmo imune à condição. Violação de obrigações faz perder todos os PM até o próximo dia."  
+  },
+  {
+    "nome": "Allihanna",
+    "crencas_objetivos": "Reverenciar seres da natureza, proteger vida selvagem e promover harmonia entre natureza e civilização.",
+    "simbolo_sagrado": "Pequena árvore ou símbolo do animal venerado (para bárbaros).",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Bastão ou arma simples natural",
+    "devotos": ["Bárbaros", "Druidas"],
+    "poderes_concedidos": [],
+    "obrigacoes_restricoes": "Preservar equilíbrio natural, não destruir flora ou fauna sem propósito."
+  },
+  {
+    "nome": "Arsenal",
+    "crencas_objetivos": "Exaltar a guerra como meio de provar valor e forjar heróis e armas lendárias.",
+    "simbolo_sagrado": "Martelo ou martelo forjado em chamas.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Martelo de guerra",
+    "devotos": ["Guerreiros", "Cavaleiros"],
+    "poderes_concedidos": ["Forja de Armas", "Bênção da Batalha"],
+    "obrigacoes_restricoes": "Devotos devem proteger honra e valor, jamais desonrar uma batalha justa."  
+  },
+  {
+    "nome": "Azgher",
+    "crencas_objetivos": "Promover o conhecimento e a escrita como forma de evolução cultural.",
+    "simbolo_sagrado": "Livro aberto com pena.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Adaga cerimonial",
+    "devotos": ["Eruditos", "Magos"],
+    "poderes_concedidos": ["Palavra Esclarecedora", "Saber Arcano"],
+    "obrigacoes_restricoes": "Registrar descobertas e compartilhar conhecimento; não ocultar verdades essenciais."  
+  },
+  {
+    "nome": "Hyninn",
+    "crencas_objetivos": "Celebrar alegria, amizade e festividades como essência da vida.",
+    "simbolo_sagrado": "Máscara de carnaval colorida.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Adaga decorativa",
+    "devotos": ["Hynne", "Bardos"],
+    "poderes_concedidos": ["Inspiração Festiva", "Encanto Alegre"],
+    "obrigacoes_restricoes": "Promover festividades regulares; não permitir tristeza nas celebrações."  
+  },
+  {
+    "nome": "Kallyadranoch",
+    "crencas_objetivos": "Reverenciar dragões e acumular riquezas para glorificar a majestade dracônica.",
+    "simbolo_sagrado": "Escamas de cinco cores diferentes.",
+    "canalizar_energia": "Negativa",
+    "arma_preferida": "Lança dracônica",
+    "devotos": ["Elfos", "Medusas", "Arcanistas", "Cavaleiros", "Guerreiros", "Lutadores", "Nobres"],
+    "poderes_concedidos": ["Aura de Medo", "Escamas Dracônicas", "Presas Primordiais", "Servos do Dragão"],
+    "obrigacoes_restricoes": "Ofertar tesouro igual a 20% da diferença de riqueza ao subir de nível; sacrifícios não permitidos a PJ."
+  },
+  {
+    "nome": "Khalmyr",
+    "crencas_objetivos": "Defender a lei, a ordem e combater o crime em nome da justiça.",
+    "simbolo_sagrado": "Espada sobreposta a uma balança.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Espada longa",
+    "devotos": ["Aggelus", "Anões", "Cavaleiros", "Guerreiros", "Nobres", "Paladinos"],
+    "poderes_concedidos": ["Coragem Total", "Dom da Verdade", "Espada Justiceira", "Reparar Injustiça"],
+    "obrigacoes_restricoes": "Não recusar pedidos de ajuda de inocentes; obedecer hierarquia eclesiástica; usar apenas itens criados por devotos." 
+  },
+  {
+    "nome": "Lena",
+    "crencas_objetivos": "Proteger a vida, curar ferimentos e promover benevolência.",
+    "simbolo_sagrado": "Cálice transbordante de luz.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Cajado de cura",
+    "devotos": ["Clérigos", "Curandeiros"],
+    "poderes_concedidos": ["Bênção Vital", "Toque Curativo"],
+    "obrigacoes_restricoes": "Curar ferimentos sempre que possível; não causar sofrimento deliberado."  
+  },
+  {
+    "nome": "Lin-Wu",
+    "crencas_objetivos": "Equilíbrio e disciplina espiritual através de artes marciais e meditação.",
+    "simbolo_sagrado": "Símbolo yin-yang entrelaçado com dragão e serpente.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Nanquim (cajado curto)",
+    "devotos": ["Lutadores", "Samurais"],
+    "poderes_concedidos": ["Forma de Tigre", "Golpe Harmonizado"],
+    "obrigacoes_restricoes": "Praticar meditação diária; não recorrer a armas de fogo."  
+  },
+  {
+    "nome": "Marah",
+    "crencas_objetivos": "Valorização da empatia e auxílio aos necessitados mediante compaixão.",
+    "simbolo_sagrado": "Coração alado.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Bastão leve",
+    "devotos": ["Humanos", "Clérigos", "Druidas"],
+    "poderes_concedidos": ["Proteção Compassiva", "Empatia Divina"],
+    "obrigacoes_restricoes": "Sem abandonar os mais fracos; realizar atos de caridade regularmente."  
+  },
+  {
+    "nome": "Megalokk",
+    "crencas_objetivos": "Promover inovação e a evolução tecnológica através da experimentação.",
+    "simbolo_sagrado": "Engrenagem flamejante.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Arma de fogo leve",
+    "devotos": ["Inventores", "Técnicos"],
+    "poderes_concedidos": ["Engenharia Divina", "Criar Dispositivo"],
+    "obrigacoes_restricoes": "Experimentar novas invenções; não causar destruição indiscriminada."  
+  },
+  {
+    "nome": "Nimb",
+    "crencas_objetivos": "Controle dos climas e das águas, promovendo equilíbrio meteorológico.",
+    "simbolo_sagrado": "Nuvem com relâmpago.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Tridente ou lança aquática",
+    "devotos": ["Cavaleiros", "Druidas"],
+    "poderes_concedidos": ["Tempestade Invocada", "Chuva Pura"],
+    "obrigacoes_restricoes": "Manter equilíbrio climático; não provocar tempestades destrutivas sem razão."  
+  },
+  {
+    "nome": "Oceano",
+    "crencas_objetivos": "Maremotos e viagens marítimas, guiando navegantes pelos mares.",
+    "simbolo_sagrado": "Concha spiral poderosa.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Tridente naval",
+    "devotos": ["Marujos", "Bucaneiros", "Druidas"],
+    "poderes_concedidos": ["Navegação Celestial", "Controlar Correntes"],
+    "obrigacoes_restricoes": "Proteger vidas no mar; não causar naufrágios deliberados."  
+  },
+  {
+    "nome": "Sszzaas",
+    "crencas_objetivos": "Manipulação de iguais e dominação mental através de sacrifícios.",
+    "simbolo_sagrado": "Serpente entrelaçada com pentagrama.",
+    "canalizar_energia": "Negativa",
+    "arma_preferida": "Chicote mágico",
+    "devotos": ["Clérigos", "Magos"],
+    "poderes_concedidos": ["Dominação Mental", "Sussurros Sombrios"],
+    "obrigacoes_restricoes": "Realizar sacrifícios periódicos; manter segredo sobre cultos."  
+  },
+  {
+    "nome": "Tanna-Toh",
+    "crencas_objetivos": "Arte, esplendor e criatividade nas formas artísticas.",
+    "simbolo_sagrado": "Paleta de pintura e pincel.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Adaga ornamentada",
+    "devotos": ["Artistas", "Bardos"],
+    "poderes_concedidos": ["Obra-prima Viva", "Inspiração Divina"],
+    "obrigacoes_restricoes": "Criar ao menos uma obra de arte por lua; não depreciar outras artes."  
+  },
+  {
+    "nome": "Tenebra",
+    "crencas_objetivos": "Domínio das trevas, assassinatos silenciosos e mistérios.",
+    "simbolo_sagrado": "Lua negra com gotas de sombra.",
+    "canalizar_energia": "Negativa",
+    "arma_preferida": "Adaga envenenada",
+    "devotos": ["Assassinos", "Ladinos", "Clérigos"],
+    "poderes_concedidos": ["Sombra Oculta", "Visão das Trevas"],
+    "obrigacoes_restricoes": "Operar na escuridão; não permitir que luz alcance seus rituais."  
+  },
+  {
+    "nome": "Thwor",
+    "crencas_objetivos": "Destruição controlada para manter equilíbrio e renascimento.",
+    "simbolo_sagrado": "Machado envolto em fumaça.",
+    "canalizar_energia": "Negativa",
+    "arma_preferida": "Machado de batalha",
+    "devotos": ["Bárbaros", "Guerreiros"],
+    "poderes_concedidos": ["Fúria Aniquiladora", "Impacto Sagrado"],
+    "obrigacoes_restricoes": "Destruir apenas o necessário; renovações após devastação."  
+  },
+  {
+    "nome": "Thyatis",
+    "crencas_objetivos": "Valor, honra militar e sinergia entre guerreiros em campo.",
+    "simbolo_sagrado": "Porta-estandarte de guerra.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Espada longa com brasão",
+    "devotos": ["Soldados", "Paladinos"],
+    "poderes_concedidos": ["Disciplina Marcial", "Convocação de Tropas"],
+    "obrigacoes_restricoes": "Respeitar hierarquia e códigos militares; não desertar em batalha."  
+  },
+  {
+    "nome": "Valkaria",
+    "crencas_objetivos": "Ambição, rebeldia, liberdade e proteção dos oprimidos.",
+    "simbolo_sagrado": "Estátua de Valkaria ou seis faixas entrelaçadas.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Mangual",
+    "devotos": ["Aventureiros de todas as classes"],
+    "poderes_concedidos": ["Almejar o Impossível", "Armas da Ambição", "Coragem Total", "Liberdade Divina"],
+    "obrigacoes_restricoes": "Não fixar moradia por mais de 2d10+10 dias em um lugar; não casar ou formar união estável."
+  },
+  {
+    "nome": "Wynna",
+    "crencas_objetivos": "Encantamento, glamour e a magia das feéricas no cotidiano.",
+    "simbolo_sagrado": "Flor prateada de quatro pétalas.",
+    "canalizar_energia": "Positiva",
+    "arma_preferida": "Cetro encantado",
+    "devotos": ["Bardos", "Feéricos"],
+    "poderes_concedidos": ["Encanto dos Flo'"]
+  }
+]

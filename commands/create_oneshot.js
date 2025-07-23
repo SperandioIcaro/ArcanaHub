@@ -1,6 +1,13 @@
 // commands/create_oneshot.js
 const ICONS = ['🔥','🛡️','⚔️','🧙','🐉','🌌','💀','🏹','🗺️','🔮'];
+const fs = require('fs');
+const path = require('path');
 const { SlashCommandBuilder, PermissionFlagsBits, ChannelType } = require('discord.js');
+
+// Load available mechanics dynamically from /mechanics directory
+const mechanicsDir = path.join(__dirname, '..', 'mechanics');
+const availableMechanics = fs.readdirSync(mechanicsDir)
+  .filter(file => fs.statSync(path.join(mechanicsDir, file)).isDirectory());
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,13 +18,22 @@ module.exports = {
          .setDescription('Nome da campanha')
          .setRequired(true)
     )
+    .addStringOption(opt =>
+      opt.setName('mechanic')
+         .setDescription('Sistema de regras para a oneshot')
+         .setRequired(true)
+         .addChoices(
+           ...availableMechanics.map(m => ({ name: m, value: m }))
+         )
+    )
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
   
   async execute(interaction) {
-    // 0) Defer para ganhar tempo de execução
     await interaction.deferReply({ ephemeral: true });
 
+    // 0) Captura opções
     const rawName = interaction.options.getString('name');
+    const mech = interaction.options.getString('mechanic');
     const guild   = interaction.guild;
     const userId  = interaction.user.id;
     const roleName = `mestre${userId}`;
@@ -36,11 +52,11 @@ module.exports = {
     }
     await interaction.member.roles.add(mestreRole);
 
-    // 2) Escolhe ícone aleatório e formata nome em maiúsculas
+    // 2) Escolhe ícone e formata nome
     const icon = ICONS[Math.floor(Math.random() * ICONS.length)];
-    const categoryName = `${icon} ${rawName.toUpperCase()}`;
+    const categoryName = `${icon} ${rawName.toUpperCase()} [${mech}]`;
 
-    // 3) Cria categoria com permissão padrão negada
+    // 3) Cria categoria com permissão negada ao everyone
     const category = await guild.channels.create({
       name: categoryName,
       type: ChannelType.GuildCategory,
@@ -49,7 +65,7 @@ module.exports = {
       ]
     });
 
-    // 4) Configuração dos canais de texto
+    // 4) Define canais de texto
     const channels = [
       { name: 'sessao',    overwrites: [
           { id: guild.roles.everyone, allow: [PermissionFlagsBits.ViewChannel, PermissionFlagsBits.SendMessages] }
@@ -72,7 +88,7 @@ module.exports = {
       }
     ];
 
-    // 5) Cria canais de texto dentro da categoria
+    // 5) Cria canais de texto na categoria
     for (const ch of channels) {
       await guild.channels.create({
         name: ch.name,
@@ -93,13 +109,13 @@ module.exports = {
       ]
     });
 
-    // 7) Edita a resposta inicialmente deferida
+    // 7) Resposta final
     try {
-        await interaction.editReply({ 
-            content: `✅ Oneshot **${rawName}** criada com sucesso como **${categoryName}**!`
-        });
+      await interaction.editReply({ 
+        content: `✅ Oneshot **${rawName}** criada com sucesso sob o sistema **${mech}** como **${categoryName}**!`
+      });
     } catch (err) {
-        console.error("Erro ao responder a interação:", err);
+      console.error("Erro ao responder a interação:", err);
     }
   }
 };

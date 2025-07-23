@@ -1,0 +1,142 @@
+[
+  {
+    "nome": "Acólito",
+    "descricao": "Você cresceu em um templo ou convento, aprendendo sobre fé e religião.",
+    "pericias": ["Religião"],
+    "poder": "Benção Menor",
+    "equipamento": ["símbolo sagrado", "vestes simples"]
+  },
+  {
+    "nome": "Amaldiçoado",
+    "descricao": "Você sofre com uma maldição antiga ou recente que afeta sua vida e seus poderes.",
+    "pericias": ["Intuição"],
+    "poder": "Toque Macabro",
+    "equipamento": ["símbolo estranho", "fragmento da maldição"]
+  },
+  {
+    "nome": "Andarilho",
+    "descricao": "Viajante que nunca se apega a um lugar só. Conhece culturas, trilhas e atalhos pelo mundo.",
+    "pericias": ["Sobrevivência"],
+    "poder": "Conhecimento de Terreno",
+    "equipamento": ["cantil", "mapa incompleto"]
+  },
+  {
+    "nome": "Aristocrata",
+    "descricao": "Nobre de nascimento ou convívio. Acostumado ao luxo, influência e intriga social.",
+    "pericias": ["Diplomacia"],
+    "poder": "Contato Nobre",
+    "equipamento": ["anel de sinete", "roupas elegantes"]
+  },
+  {
+    "nome": "Artista",
+    "descricao": "Você viveu das artes – canto, pintura, dança – e sabe como emocionar ou entreter.",
+    "pericias": ["Atuação"],
+    "poder": "Inspiração Improvisada",
+    "equipamento": ["instrumento musical ou ferramentas de arte", "roupas chamativas"]
+  },
+  {
+    "nome": "Assombrado",
+    "descricao": "Algo do outro mundo marcou sua vida – um espírito, visão ou evento inexplicável.",
+    "pericias": ["Misticismo"],
+    "poder": "Visão Espiritual",
+    "equipamento": ["relíquia assombrada", "vela negra"]
+  },
+  {
+    "nome": "Charlatão",
+    "descricao": "Mestre da enganação e dos disfarces. Vende sonhos e ilusões por lucro ou diversão.",
+    "pericias": ["Enganação"],
+    "poder": "Rosto Inocente",
+    "equipamento": ["kit de disfarce", "moeda falsa"]
+  },
+  {
+    "nome": "Criminoso",
+    "descricao": "Você já viveu à margem da lei – como ladrão, falsificador, traficante ou assassino.",
+    "pericias": ["Ladinagem"],
+    "poder": "Contato do Submundo",
+    "equipamento": ["faca escondida", "documento falso"]
+  },
+  {
+    "nome": "Curandeiro",
+    "descricao": "Especialista em medicina, alquimia ou rituais de cura. Costuma ser respeitado ou temido.",
+    "pericias": ["Cura"],
+    "poder": "Preparar Remédio",
+    "equipamento": ["kit de primeiros socorros", "ervas medicinais"]
+  },
+  {
+    "nome": "Erudito",
+    "descricao": "Você se dedicou à leitura, pesquisa e busca pelo saber acima de tudo.",
+    "pericias": ["Conhecimento"],
+    "poder": "Memória Excepcional",
+    "equipamento": ["livro velho", "tinta e pena"]
+  },
+  {
+    "nome": "Fazendeiro",
+    "descricao": "Você cresceu no campo, cuidando da terra e dos animais. Valoriza trabalho duro e tradição.",
+    "pericias": ["Adestramento"],
+    "poder": "Força Bruta",
+    "equipamento": ["chapéu de palha", "instrumento agrícola"]
+  },
+  {
+    "nome": "Forasteiro",
+    "descricao": "De terras distantes ou planos diferentes, você carrega cultura e costumes estranhos.",
+    "pericias": ["Intuição"],
+    "poder": "Idioma Exótico",
+    "equipamento": ["amuleto tribal", "mapa antigo"]
+  },
+  {
+    "nome": "Inventor",
+    "descricao": "Você sempre desmontou coisas para entender como funcionam – e agora cria as suas.",
+    "pericias": ["Ofício"],
+    "poder": "Ferramentas Especiais",
+    "equipamento": ["kit de ferramentas", "peças sobressalentes"]
+  },
+  {
+    "nome": "Iniciado",
+    "descricao": "Você foi treinado por um grupo místico, ordem arcana ou tradição ancestral.",
+    "pericias": ["Misticismo"],
+    "poder": "Ritual Antigo",
+    "equipamento": ["símbolo da ordem", "livro de anotações"]
+  },
+  {
+    "nome": "Lobo Solitário",
+    "descricao": "Você sempre viveu por conta própria, sem confiar em ninguém além de si mesmo.",
+    "pericias": ["Furtividade"],
+    "poder": "Instinto de Sobrevivência",
+    "equipamento": ["manto velho", "faca confiável"]
+  },
+  {
+    "nome": "Marujo",
+    "descricao": "Você cresceu nos mares, lidando com tempestades, monstros e piratas.",
+    "pericias": ["Navegação"],
+    "poder": "Braços do Mar",
+    "equipamento": ["âncora pequena", "corda naval"]
+  },
+  {
+    "nome": "Mercador",
+    "descricao": "Você conhece o valor de tudo. Já comprou e vendeu de armas a almas.",
+    "pericias": ["Avaliação"],
+    "poder": "Negociação Esperta",
+    "equipamento": ["balança de bolso", "registro de dívidas"]
+  },
+  {
+    "nome": "Nômade",
+    "descricao": "Sua vida foi marcada pelo movimento constante – desertos, montanhas, planícies.",
+    "pericias": ["Sobrevivência"],
+    "poder": "Passos Infalíveis",
+    "equipamento": ["mochila leve", "lenço protetor"]
+  },
+  {
+    "nome": "Oráculo",
+    "descricao": "Você recebe visões, sonhos ou presságios. Às vezes úteis. Às vezes assustadores.",
+    "pericias": ["Intuição"],
+    "poder": "Premonição",
+    "equipamento": ["olho de vidro", "pendente estranho"]
+  },
+  {
+    "nome": "Operário",
+    "descricao": "Trabalhador urbano – ferreiro, minerador, pedreiro, etc. Cresceu no suor e no esforço.",
+    "pericias": ["Fortitude"],
+    "poder": "Músculos de Aço",
+    "equipamento": ["martelo de mão", "luvas de couro"]
+  }
+]

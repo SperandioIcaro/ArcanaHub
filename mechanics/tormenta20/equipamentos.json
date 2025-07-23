@@ -1,0 +1,546 @@
+[
+  {
+    "nome": "Armadura de Couro",
+    "categoria": "armadura leve",
+    "bonus_ca": 2,
+    "penalidade_des": 0,
+    "peso": 5,
+    "preco": "10 PO",
+    "descricao": "Conjunto de tiras de couro tratadas."
+  },
+  {
+    "nome": "Cota de Malha",
+    "categoria": "armadura média",
+    "bonus_ca": 4,
+    "penalidade_des": -1,
+    "peso": 15,
+    "preco": "50 PO",
+    "descricao": "Anéis de metal entrelaçados cobrindo o corpo."
+  },
+  {
+    "nome": "Cota de Elos",
+    "categoria": "armadura média",
+    "bonus_ca": 5,
+    "penalidade_des": -2,
+    "peso": 18,
+    "preco": "100 PO",
+    "descricao": "Elos de aço pesados formando uma malha densa."
+  },
+  {
+    "nome": "Brigantina",
+    "categoria": "armadura pesada",
+    "bonus_ca": 6,
+    "penalidade_des": -3,
+    "peso": 25,
+    "preco": "150 PO",
+    "descricao": "Placas de metal presas sobre tissu de couro."
+  },
+  {
+    "nome": "Couraça de Aço",
+    "categoria": "armadura pesada",
+    "bonus_ca": 8,
+    "penalidade_des": -4,
+    "peso": 30,
+    "preco": "200 PO",
+    "descricao": "Placas metálicas formando proteção completa."
+  },
+  {
+    "nome": "Escudo Leve",
+    "categoria": "escudo",
+    "bonus_ca": 2,
+    "peso": 6,
+    "preco": "10 PO",
+    "descricao": "Escudo redondo de madeira reforçada."
+  },
+  {
+    "nome": "Escudo Pesado",
+    "categoria": "escudo",
+    "bonus_ca": 4,
+    "peso": 12,
+    "preco": "20 PO",
+    "descricao": "Escudo retangular de aço reforçado."
+  },
+  {
+    "nome": "Mochila",
+    "categoria": "aventura",
+    "peso": 2,
+    "preco": "2 PO",
+    "descricao": "Carrega itens básicos dos aventureiros."
+  },
+  {
+    "nome": "Cantil",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "2 PO",
+    "descricao": "Recipiente para até 1 litro de líquido."
+  },
+  {
+    "nome": "Corda de Cânhamo (15m)",
+    "categoria": "aventura",
+    "peso": 3,
+    "preco": "1 PO",
+    "descricao": "Corda resistente para escalada e amarras."
+  },
+  {
+    "nome": "Corda de Seda (15m)",
+    "categoria": "aventura",
+    "peso": 2,
+    "preco": "10 PO",
+    "descricao": "Corda fina, forte e silenciosa."
+  },
+  {
+    "nome": "Tocha",
+    "categoria": "luz",
+    "peso": 1,
+    "preco": "1 PO",
+    "descricao": "Fonte de luz de 6 metros por 1 hora."
+  },
+  {
+    "nome": "Vela",
+    "categoria": "luz",
+    "peso": 0,
+    "preco": "1 PC",
+    "descricao": "Fonte de luz de 2 metros por 1 hora."
+  },
+  {
+    "nome": "Kit de Escalada",
+    "categoria": "aventura",
+    "peso": 5,
+    "preco": "25 PO",
+    "descricao": "Contém ganchos, corda, pederneira e ferramentas para escalada."
+  },
+  {
+    "nome": "Kit de Ladrão",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "30 PO",
+    "descricao": "Ferramentas para arrombar fechaduras e desarmar armadilhas."
+  },
+  {
+    "nome": "Kit de Primeiros Socorros",
+    "categoria": "aventura",
+    "peso": 2,
+    "preco": "15 PO",
+    "descricao": "Bandagens, antissépticos e ervas para curar ferimentos leves."
+  },
+  {
+    "nome": "Saco de Dormir",
+    "categoria": "aventura",
+    "peso": 5,
+    "preco": "1 PO",
+    "descricao": "Proporciona descanso confortável para 1 pessoa."
+  },
+  {
+    "nome": "Lanterna com Óleos (1h)",
+    "categoria": "luz",
+    "peso": 3,
+    "preco": "5 PO",
+    "descricao": "Ilumina 12 metros por 1 hora. Requer óleo para funcionar."
+  },
+  {
+    "nome": "Botas de Couro Reforçadas",
+    "categoria": "aventura",
+    "peso": 2,
+    "preco": "5 PO",
+    "descricao": "Aumentam o conforto e a estabilidade durante longas caminhadas."
+  },
+  {
+    "nome": "Manto com Capuz",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "3 PO",
+    "descricao": "Oferece proteção contra chuva e vento, além de auxiliar em furtividade."
+  },
+  {
+    "nome": "Luvas de Couro",
+    "categoria": "aventura",
+    "peso": 0.5,
+    "preco": "1 PO",
+    "descricao": "Protegem as mãos de frio e abrasões leves."
+  },
+  {
+    "nome": "Kit de Cozinha de Acampamento",
+    "categoria": "aventura",
+    "peso": 3,
+    "preco": "4 PO",
+    "descricao": "Panelas, copo de estanho, pratos e utensílios simples."
+  },
+  {
+    "nome": "Pederneira",
+    "categoria": "aventura",
+    "peso": 0.5,
+    "preco": "1 PO",
+    "descricao": "Usada para acender fogueiras sem depender de magia."
+  },
+  {
+    "nome": "Tenda para Duas Pessoas",
+    "categoria": "aventura",
+    "peso": 8,
+    "preco": "10 PO",
+    "descricao": "Abrigo portátil contra chuva, frio e vento."
+  },
+  {
+    "nome": "Espelho de Aço Pequeno",
+    "categoria": "aventura",
+    "peso": 0.5,
+    "preco": "10 PO",
+    "descricao": "Usado para sinalização ou inspecionar áreas perigosas sem se expor."
+  },
+  {
+    "nome": "Apito de Madeira",
+    "categoria": "aventura",
+    "peso": 0,
+    "preco": "5 PP",
+    "descricao": "Instrumento para chamar atenção ou alertar aliados."
+  },
+  {
+    "nome": "Cajado de Viagem",
+    "categoria": "aventura",
+    "peso": 4,
+    "preco": "2 PO",
+    "descricao": "Usado como apoio em terrenos difíceis e ocasional defesa improvisada."
+  },
+  {
+    "nome": "Mapa da Região",
+    "categoria": "aventura",
+    "peso": 0,
+    "preco": "15 PO",
+    "descricao": "Mapa detalhado com rotas, rios, vilarejos e pontos de interesse."
+  },
+  {
+    "nome": "Kit de Alquimista",
+    "categoria": "aventura",
+    "peso": 6,
+    "preco": "50 PO",
+    "descricao": "Ferramentas para criação de poções simples e extratos alquímicos."
+  },
+  {
+    "nome": "Flauta de Madeira",
+    "categoria": "instrumento",
+    "peso": 1,
+    "preco": "2 PO",
+    "descricao": "Instrumento musical leve e portátil."
+  },
+  {
+    "nome": "Livro de Anotações",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "10 PO",
+    "descricao": "Contém páginas em branco para registrar informações importantes."
+  },
+  {
+    "nome": "Tinta e Pena",
+    "categoria": "aventura",
+    "peso": 0.2,
+    "preco": "5 PO",
+    "descricao": "Material de escrita delicado, usado para cartas e registros mágicos."
+  },
+  {
+    "nome": "Ração de Viagem (1 dia)",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "5 PP",
+    "descricao": "Comida seca e nutritiva, suficiente para uma pessoa por um dia."
+  },
+  {
+    "nome": "Arpão Leve",
+    "categoria": "aventura",
+    "peso": 4,
+    "preco": "10 PO",
+    "descricao": "Pode ser usado como arma ou ferramenta para escalar e prender."
+  },
+  {
+    "nome": "Espetos de Metal (10 unidades)",
+    "categoria": "aventura",
+    "peso": 1,
+    "preco": "1 PO",
+    "descricao": "Usados para cozinhar carnes ou sustentar pequenas tendas."
+  },
+  {
+    "nome": "Chave Mestra",
+    "categoria": "aventura",
+    "peso": 0.2,
+    "preco": "50 PO",
+    "descricao": "Ferramenta versátil que aumenta chances de abrir fechaduras simples."
+  },
+  {
+    "nome": "Capa de Viagem Reforçada",
+    "categoria": "aventura",
+    "peso": 3,
+    "preco": "12 PO",
+    "descricao": "Protege contra chuva intensa e frio moderado. Resistente e durável."
+  },
+  {
+    "nome": "Tubo de Armazenamento para Pergaminhos",
+    "categoria": "aventura",
+    "peso": 0.5,
+    "preco": "8 PO",
+    "descricao": "Tubo de couro rígido usado para guardar pergaminhos e mapas com segurança."
+  },
+  {
+    "nome": "Símbolo Sagrado",
+    "categoria": "especial",
+    "peso": 0.5,
+    "preco": "5 TO",
+    "descricao": "Emblema de culto que canaliza poder divino."
+  },
+  {
+    "nome": "Vestes Simples",
+    "categoria": "vestimenta",
+    "peso": 1,
+    "preco": "1 TO",
+    "descricao": "Túnica comum usada por religiosos e acólitos."
+  },
+  {
+    "nome": "Símbolo Estranho",
+    "categoria": "especial",
+    "peso": 0.3,
+    "preco": "3 TO",
+    "descricao": "Objeto enigmático, coberto de inscrições misteriosas."
+  },
+  {
+    "nome": "Fragmento da Maldição",
+    "categoria": "especial",
+    "peso": 0.2,
+    "preco": "1 TO",
+    "descricao": "Pedaço pulsante de energia maldita."
+  },
+  {
+    "nome": "Cantil",
+    "categoria": "container",
+    "peso": 1,
+    "preco": "2 TO",
+    "descricao": "Recipiente para até 1 litro de líquido."
+  },
+  {
+    "nome": "Mapa Incompleto",
+    "categoria": "informação",
+    "peso": 0.1,
+    "preco": "2 TO",
+    "descricao": "Esboço parcial de rotas e locais secretos."
+  },
+  {
+    "nome": "Anel de Sinete",
+    "categoria": "joia",
+    "peso": 0.05,
+    "preco": "15 TO",
+    "descricao": "Anel gravado com o brasão de uma família nobre."
+  },
+  {
+    "nome": "Roupas Elegantes",
+    "categoria": "vestimenta",
+    "peso": 2,
+    "preco": "10 TO",
+    "descricao": "Traje caro, garantia de boas impressões em festas."
+  },
+  {
+    "nome": "Instrumento Musical ou Ferramentas de Arte",
+    "categoria": "ferramenta",
+    "peso": 3,
+    "preco": "5 TO",
+    "descricao": "Conjunto de instrumentos ou pincéis e tintas."
+  },
+  {
+    "nome": "Roupas Chamativas",
+    "categoria": "vestimenta",
+    "peso": 2,
+    "preco": "5 TO",
+    "descricao": "Traje colorido, difícil de passar despercebido."
+  },
+  {
+    "nome": "Relíquia Assombrada",
+    "categoria": "especial",
+    "peso": 1,
+    "preco": "20 TO",
+    "descricao": "Objeto que exala energia sobrenatural."
+  },
+  {
+    "nome": "Vela Negra",
+    "categoria": "consumível",
+    "peso": 0.1,
+    "preco": "1 TO",
+    "descricao": "Queima em chamas negras, usada em rituais sombrios."
+  },
+  {
+    "nome": "Kit de Disfarce",
+    "categoria": "ferramenta",
+    "peso": 2,
+    "preco": "10 TO",
+    "descricao": "Máscaras, maquiagem e perucas para encobrir identidade."
+  },
+  {
+    "nome": "Moeda Falsa",
+    "categoria": "diversão",
+    "peso": 0.01,
+    "preco": "1 TO",
+    "descricao": "Imitação perfeita de moedas comuns."
+  },
+  {
+    "nome": "Documento Falso",
+    "categoria": "informação",
+    "peso": 0.1,
+    "preco": "5 TO",
+    "descricao": "Papéis forjados que garantem livre passagem."
+  },
+  {
+    "nome": "Kit de Primeiros Socorros",
+    "categoria": "ferramenta",
+    "peso": 2,
+    "preco": "15 TO",
+    "descricao": "Bandagens, antisséptico e instrumentos de cura."
+  },
+  {
+    "nome": "Ervas Medicinais",
+    "categoria": "consumível",
+    "peso": 0.5,
+    "preco": "3 TO",
+    "descricao": "Plantas secas com propriedades curativas."
+  },
+  {
+    "nome": "Livro Velho",
+    "categoria": "informação",
+    "peso": 1,
+    "preco": "2 TO",
+    "descricao": "Volume amarelado com textos antigos."
+  },
+  {
+    "nome": "Tinta e Pena",
+    "categoria": "ferramenta",
+    "peso": 0.2,
+    "preco": "1 TO",
+    "descricao": "Essenciais para escrita e ilustração."
+  },
+  {
+    "nome": "Chapéu de Palha",
+    "categoria": "vestimenta",
+    "peso": 0.3,
+    "preco": "1 TO",
+    "descricao": "Protege do sol e acrescenta estilo rústico."
+  },
+  {
+    "nome": "Instrumento Agrícola",
+    "categoria": "ferramenta",
+    "peso": 2,
+    "preco": "2 TO",
+    "descricao": "Ferramenta para arar, colher ou cuidar do campo."
+  },
+  {
+    "nome": "Amuleto Tribal",
+    "categoria": "joia",
+    "peso": 0.2,
+    "preco": "8 TO",
+    "descricao": "Talismã esculpido com símbolos de proteção."
+  },
+  {
+    "nome": "Mapa Antigo",
+    "categoria": "informação",
+    "peso": 0.1,
+    "preco": "5 TO",
+    "descricao": "Cartografia desgastada de terrenos distantes."
+  },
+  {
+    "nome": "Kit de Ferramentas",
+    "categoria": "ferramenta",
+    "peso": 5,
+    "preco": "20 TO",
+    "descricao": "Ferramentas variadas para consertos e invenções."
+  },
+  {
+    "nome": "Peças Sobressalentes",
+    "categoria": "ferramenta",
+    "peso": 1,
+    "preco": "5 TO",
+    "descricao": "Componentes metálicos para reparo de máquinas."
+  },
+  {
+    "nome": "Símbolo da Ordem",
+    "categoria": "especial",
+    "peso": 0.5,
+    "preco": "10 TO",
+    "descricao": "Emblema que demonstra fé e filiação."
+  },
+  {
+    "nome": "Livro de Anotações",
+    "categoria": "informação",
+    "peso": 1,
+    "preco": "3 TO",
+    "descricao": "Caderno com folhas em branco para registros."
+  },
+  {
+    "nome": "Manto Velho",
+    "categoria": "vestimenta",
+    "peso": 1,
+    "preco": "1 TO",
+    "descricao": "Manto gasto, mas ainda eficaz contra vento."
+  },
+  {
+    "nome": "Âncora Pequena",
+    "categoria": "instrumento",
+    "peso": 2,
+    "preco": "10 TO",
+    "descricao": "Utilizada para prender embarcações pequenas."
+  },
+  {
+    "nome": "Corda Naval",
+    "categoria": "ferramenta",
+    "peso": 3,
+    "preco": "2 TO",
+    "descricao": "Corda grossa, resistente a condições marítimas."
+  },
+  {
+    "nome": "Balança de Bolso",
+    "categoria": "instrumento",
+    "peso": 0.2,
+    "preco": "5 TO",
+    "descricao": "Permite pesar pequenas quantidades com precisão."
+  },
+  {
+    "nome": "Registro de Dívidas",
+    "categoria": "informação",
+    "peso": 0.5,
+    "preco": "1 TO",
+    "descricao": "Livro com anotações de acordos financeiros."
+  },
+  {
+    "nome": "Mochila Leve",
+    "categoria": "container",
+    "peso": 2,
+    "preco": "5 TO",
+    "descricao": "Permite carregar provisões sem cansar."
+  },
+  {
+    "nome": "Lenço Protetor",
+    "categoria": "vestimenta",
+    "peso": 0.1,
+    "preco": "1 TO",
+    "descricao": "Protege rosto e pescoço contra poeira e areia."
+  },
+  {
+    "nome": "Olho de Vidro",
+    "categoria": "instrumento",
+    "peso": 0.1,
+    "preco": "15 TO",
+    "descricao": "Lente que amplia visão à distância."
+  },
+  {
+    "nome": "Pendente Estranho",
+    "categoria": "joia",
+    "peso": 0.2,
+    "preco": "5 TO",
+    "descricao": "Pingente incomum, possivelmente mágico."
+  },
+  {
+    "nome": "Martelo de Mão",
+    "categoria": "ferramenta",
+    "peso": 1,
+    "preco": "2 TO",
+    "descricao": "Ferramenta robusta para construção e conserto."
+  },
+  {
+    "nome": "Luvas de Couro",
+    "categoria": "vestimenta",
+    "peso": 0.5,
+    "preco": "1 TO",
+    "descricao": "Protegem as mãos contra o frio e cortes leves."
+  }
+]

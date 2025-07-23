@@ -1,0 +1,33 @@
+
+[
+  {"nome": "Acrobacia",      "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": true},
+  {"nome": "Adestramento",   "atributo": "Carisma",      "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Atletismo",      "atributo": "Força",         "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Atuação",        "atributo": "Carisma",      "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Cavalgar",       "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Conhecimento",   "atributo": "Inteligência", "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Cura",           "atributo": "Sabedoria",    "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Diplomacia",     "atributo": "Carisma",      "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Enganação",      "atributo": "Carisma",      "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Fortitude",      "atributo": "Constituição", "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Furtividade",     "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": true},
+  {"nome": "Guerra",         "atributo": "Inteligência", "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Iniciativa",     "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Intimidação",    "atributo": "Carisma",      "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Intuição",       "atributo": "Sabedoria",    "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Investigação",   "atributo": "Inteligência", "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Jogatina",       "atributo": "Carisma",      "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Ladinagem",      "atributo": "Destreza",     "somente_treinada": true,  "penalidade_armadura": true},
+  {"nome": "Luta",           "atributo": "Força",         "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Misticismo",     "atributo": "Inteligência", "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Nobreza",        "atributo": "Inteligência", "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Ofício",         "atributo": "Inteligência", "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Percepção",      "atributo": "Sabedoria",    "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Pilotagem",      "atributo": "Destreza",     "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Pontaria",       "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Reflexos",       "atributo": "Destreza",     "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Religião",       "atributo": "Sabedoria",    "somente_treinada": true,  "penalidade_armadura": false},
+  {"nome": "Sobrevivência",  "atributo": "Sabedoria",    "somente_treinada": false, "penalidade_armadura": false},
+  {"nome": "Vontade",        "atributo": "Sabedoria",    "somente_treinada": false, "penalidade_armadura": false}
+]
+

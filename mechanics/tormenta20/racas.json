@@ -1,0 +1,190 @@
+[
+  {
+    "nome": "Anão",
+    "descricao": "Fortes e resilientes, anões são conhecidos por sua robustez e tradição guerreira, vivendo em sociedades subterrâneas organizadas.",
+    "tem_subracas": true,
+    "modificadores_atributo": [
+      { "atributo": "CON", "valor": 2 },
+      { "atributo": "SAB", "valor": 1 },
+      { "atributo": "DES", "valor": -1 }
+    ],
+    "poderes_raciais": [
+      "Visão no Escuro",
+      "Resistência à Veneno +2",
+      "Proficiência com Machado de Guerra e Martelo de Guerra"
+    ]
+  },
+  {
+    "nome": "Dahllan",
+    "descricao": "Criaturas feitas pela deusa da natureza, com corpos feitos de madeira viva. Ligados à natureza e à cura.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "SAB", "valor": 2 },
+      { "atributo": "CON", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Conexão com a Natureza",
+      "Resistência a Doenças +2"
+    ]
+  },
+  {
+    "nome": "Elfo",
+    "descricao": "Beldades imortais com forte ligação à magia. Seus longos séculos de vida trazem sabedoria e arrogância.",
+    "tem_subracas": true,
+    "modificadores_atributo": [
+      { "atributo": "INT", "valor": 2 },
+      { "atributo": "DES", "valor": 1 },
+      { "atributo": "CON", "valor": -1 }
+    ],
+    "poderes_raciais": [
+      "Visão no Escuro",
+      "Sentidos Aguçados (+2 em Investigação e Percepção)",
+      "Reflexos Élfico (+2 em Reflexos)"
+    ]
+  },
+  {
+    "nome": "Goblin",
+    "descricao": "Pequenos, rápidos e criativos. Goblins são mestres da improvisação, caos e sobrevivência.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "DES", "valor": 2 },
+      { "atributo": "INT", "valor": 1 },
+      { "atributo": "FOR", "valor": -1 }
+    ],
+    "poderes_raciais": [
+      "Escalada Ágil",
+      "Olhos Aguçados (+2 em Investigação)"
+    ]
+  },
+  {
+    "nome": "Lefou",
+    "descricao": "Marcados pelo toque da Tormenta, os lefou sofrem com deformidades e ganham habilidades anômalas.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "CON", "valor": 2 },
+      { "atributo": "FOR", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Deformidade (conta como Poder Geral)",
+      "Regeneração Leve (+1 PV por rodada quando ferido)"
+    ]
+  },
+  {
+    "nome": "Minauro",
+    "descricao": "Orgulhosos e ferozes, os minauros vivem para provar seu valor por meio de combate e honra.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "FOR", "valor": 2 },
+      { "atributo": "CON", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Investida (+2 no dano em investida)",
+      "Chifradas (ataque natural)"
+    ]
+  },
+  {
+    "nome": "Qareen",
+    "descricao": "Seres mágicos nascidos de energia elemental pura. São belos, sedutores e orgulhosos.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "CAR", "valor": 2 },
+      { "atributo": "SAB", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Alterar Aparência (magia básica)",
+      "Resistência Elemental +2"
+    ]
+  },
+  {
+    "nome": "Humano",
+    "descricao": "Versáteis e ambiciosos, os humanos são capazes de se adaptar a qualquer caminho.",
+    "tem_subracas": true,
+    "modificadores_atributo": [
+      { "atributo": "QUALQUER", "valor": 1, "quantidade": 3 }
+    ],
+    "poderes_raciais": [
+      "Talento Extra (recebe um Poder Geral adicional)",
+      "Variação Cultural (1 perícia treinada adicional)"
+    ]
+  },
+  {
+    "nome": "Hynne",
+    "descricao": "Pequenos e ágeis, hynne vivem com alegria e otimismo, valorizando amizade e boa comida.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "DES", "valor": 2 },
+      { "atributo": "CAR", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Empatia Hynne (+2 em Diplomacia)",
+      "Sorte Hynne (1 PM adicional por combate)"
+    ]
+  },
+  {
+    "nome": "Kliren",
+    "descricao": "Cientistas arcanos obcecados por conhecimento. Os kliren são frios, racionais e movidos pela lógica.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "INT", "valor": 2 },
+      { "atributo": "CON", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Afinidade Arcana (+2 em Misticismo)",
+      "Precisão Cibernética (+2 em Pontaria)"
+    ]
+  },
+  {
+    "nome": "Medusa",
+    "descricao": "Criaturas místicas que herdaram o poder das serpentes. Muitas vezes rejeitadas, possuem dons únicos.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "INT", "valor": 2 },
+      { "atributo": "CAR", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Olhar Petrificante (ataque de paralisação)",
+      "Resistência a Veneno +2"
+    ]
+  },
+  {
+    "nome": "Osteon",
+    "descricao": "Mortos-vivos conscientes, formados por esqueletos animados. Rejeitados por muitos, mas sedentos por propósito.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "CON", "valor": 2 },
+      { "atributo": "FOR", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Imunidade a Doenças",
+      "Resistência a Frio +2"
+    ]
+  },
+  {
+    "nome": "Sulfure",
+    "descricao": "Nascidos do plano do Fogo ou de demônios, têm uma alma flamejante e disposição tempestuosa.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "FOR", "valor": 1 },
+      { "atributo": "CON", "valor": 1 },
+      { "atributo": "SAB", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Resistência a Fogo +2",
+      "Toque Flamejante (ataque evolutivo)"
+    ]
+  },
+  {
+    "nome": "Trog",
+    "descricao": "Lacertídeos robustos com cultura tribal e tradição guerreira. Adaptados a ambientes hostis.",
+    "tem_subracas": false,
+    "modificadores_atributo": [
+      { "atributo": "FOR", "valor": 2 },
+      { "atributo": "DES", "valor": -1 },
+      { "atributo": "CON", "valor": 1 }
+    ],
+    "poderes_raciais": [
+      "Cauda Agressiva (ataque natural)",
+      "Resistência a Veneno +2"
+    ]
+  }
+]

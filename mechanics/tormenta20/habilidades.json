@@ -1,0 +1,27 @@
+[
+  {"nome": "Acuidade com Arma", "descricao": "Use Destreza em vez de Força nos testes de ataque e de dano com armas leves ou de arremesso.", "pre_requisitos": [], "categoria": "Combate"},
+  {"nome": "Aparar", "descricao": "Reação, 1 PM. Reduza o dano de um ataque corpo a corpo contra você em 1d10 + modificador de Destreza.", "pre_requisitos": ["treinado em Luta"], "categoria": "Combate"},
+  {"nome": "Arma Secundária Grande", "descricao": "Empunhe duas armas de uma mão com Estilo de Duas Armas. –2 nos testes de ataque com ambas.", "pre_requisitos": ["Estilo de Duas Armas"], "categoria": "Combate"},
+  {"nome": "Ataque Poderoso", "descricao": "Antes de atacar corpo a corpo, sofra –1 no ataque para +2 no dano.", "pre_requisitos": ["Força 1"], "categoria": "Combate"},
+  {"nome": "Combater com Duas Armas", "descricao": "Você recebe +2 em testes de ataque com sua arma secundária.", "pre_requisitos": ["Estilo de Duas Armas"], "categoria": "Combate"},
+  {"nome": "Contra-Ataque", "descricao": "Reação, 2 PM. Quando um inimigo erra ataque corpo a corpo contra você, faça um ataque corpo a corpo contra ele.", "pre_requisitos": [], "categoria": "Combate"},
+  {"nome": "Defesa com Duas Armas", "descricao": "+2 na Defesa quando empunha duas armas.", "pre_requisitos": ["Estilo de Duas Armas"], "categoria": "Combate"},
+  {"nome": "Estilo de Duas Armas", "descricao": "Você pode empunhar duas armas leves, uma em cada mão.", "pre_requisitos": [], "categoria": "Combate"},
+  {"nome": "Investida Aprimorada", "descricao": "Se você se mover ao menos 6m em linha reta antes do ataque corpo a corpo, recebe +2 no teste de ataque.", "pre_requisitos": [], "categoria": "Combate"},
+  {"nome": "Presença Aterradora", "descricao": "Ação padrão, 1 PM. Amedronta todas as criaturas em alcance curto (Intimidação CD 10 + nível).", "pre_requisitos": ["treinado em Intimidação"], "categoria": "Combate"},
+  {"nome": "Reflexos de Combate", "descricao": "+2 em testes de Reflexos.", "pre_requisitos": [], "categoria": "Combate"},
+  {"nome": "Sortudo", "descricao": "1 PM para rolar novamente um teste recém realizado.", "pre_requisitos": [], "categoria": "Destino"},
+  {"nome": "Vontade de Ferro", "descricao": "+2 em testes de Vontade.", "pre_requisitos": [], "categoria": "Destino"},
+  {"nome": "Determinação", "descricao": "Reação, 1 PM. Role novamente um teste de resistência recém realizado.", "pre_requisitos": [], "categoria": "Destino"},
+  {"nome": "Sorte dos Heróis", "descricao": "1 PM. Role novamente um teste de ataque recém realizado.", "pre_requisitos": [], "categoria": "Destino"},
+  {"nome": "Força de Vontade", "descricao": "+2 em testes de resistência contra efeitos mentais.", "pre_requisitos": [], "categoria": "Destino"},
+  {"nome": "Magia em Combate", "descricao": "Você não provoca ataques ao conjurar magias adjacente a inimigos.", "pre_requisitos": ["poder conjurar magias"], "categoria": "Magia"},
+  {"nome": "Mana Extra", "descricao": "+3 PM.", "pre_requisitos": [], "categoria": "Magia"},
+  {"nome": "Foco em Magia", "descricao": "Escolha uma escola de magia. +2 em testes de ataque e CD das magias dessa escola.", "pre_requisitos": ["poder conjurar magias"], "categoria": "Magia"},
+  {"nome": "Herança Mística", "descricao": "Aprenda um truque de uma classe conjuradora. Usa Carisma como atributo-chave.", "pre_requisitos": [], "categoria": "Magia"},
+  {"nome": "Resistência à Magia", "descricao": "+2 em testes de resistência contra magias e efeitos mágicos.", "pre_requisitos": [], "categoria": "Magia"},
+  {"nome": "Sangue Mágico", "descricao": "Use Carisma como atributo-chave no lugar de outro ao conjurar magias.", "pre_requisitos": ["poder conjurar magias"], "categoria": "Magia"},
+  {"nome": "Talento Mágico", "descricao": "Aprenda uma magia de 1º círculo de uma classe conjuradora. Pode usá-la como magia de talento.", "pre_requisitos": [], "categoria": "Magia"},
+  {"nome": "Truque Aprimorado", "descricao": "Aumenta o alcance de seus truques para médio.", "pre_requisitos": ["poder conjurar magias"], "categoria": "Magia"}
+]
+

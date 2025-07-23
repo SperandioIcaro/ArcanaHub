@@ -1,0 +1,82 @@
+[
+  {
+    "nome": "Puro",
+    "raca": "*",
+    "descricao": "Sub-raça padrão usada quando o personagem não possui subdivisões ou deseja manter a linhagem pura.",
+    "vantagens": []
+  },
+  {
+    "nome": "Da Montanha",
+    "raca": "Anão",
+    "descricao": "Anões robustos e disciplinados, vindos das fortalezas rochosas das montanhas.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "CON", "valor": 2 },
+      { "tipo": "habilidade", "descricao": "Visão no escuro 18m" }
+    ]
+  },
+  {
+    "nome": "Uivante",
+    "raca": "Anão",
+    "descricao": "Anões barulhentos, orgulhosos e obstinados, famosos por sua bravura e vozes potentes.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "FOR", "valor": 1 },
+      { "tipo": "atributo", "atributo": "CAR", "valor": 1 },
+      { "tipo": "resistencia", "descricao": "Resistência a venenos" }
+    ]
+  },
+  {
+    "nome": "Da Floresta",
+    "raca": "Elfo",
+    "descricao": "Elfos com laços profundos com a natureza, excelentes caçadores e guias selvagens.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "DES", "valor": 2 },
+      { "tipo": "atributo", "atributo": "INT", "valor": 1 },
+      { "tipo": "habilidade", "descricao": "Visão no escuro 18m" }
+    ]
+  },
+  {
+    "nome": "Lunar",
+    "raca": "Elfo",
+    "descricao": "Elfos enigmáticos e mágicos, com forte ligação ao mundo arcano e aos astros.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "INT", "valor": 2 },
+      { "tipo": "atributo", "atributo": "CAR", "valor": 1 },
+      { "tipo": "habilidade", "descricao": "Resistência a magias" }
+    ]
+  },
+  {
+    "nome": "Comum",
+    "raca": "Humano",
+    "descricao": "Humanos padrão, adaptáveis e comuns em todos os reinos de Arton.",
+    "vantagens": []
+  },
+  {
+    "nome": "Herval",
+    "raca": "Humano",
+    "descricao": "Humanos das estepes, valorizam laços familiares e honra pessoal.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "FOR", "valor": 1 },
+      { "tipo": "habilidade", "descricao": "Perícia bônus: Sobrevivência" }
+    ]
+  },
+  {
+    "nome": "Taureliano",
+    "raca": "Humano",
+    "descricao": "Humanos do reino de Tauron, disciplinados, religiosos e marcados pela guerra.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "CAR", "valor": 1 },
+      { "tipo": "atributo", "atributo": "SAB", "valor": 1 },
+      { "tipo": "habilidade", "descricao": "Perícia bônus: Religião" }
+    ]
+  },
+  {
+    "nome": "Calaviano",
+    "raca": "Humano",
+    "descricao": "Humanos das colinas de Calavan, astutos, alegres e festeiros.",
+    "vantagens": [
+      { "tipo": "atributo", "atributo": "DES", "valor": 1 },
+      { "tipo": "atributo", "atributo": "CAR", "valor": 1 },
+      { "tipo": "habilidade", "descricao": "Perícia bônus: Atuação" }
+    ]
+  }
+]

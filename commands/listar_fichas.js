@@ -6,45 +6,54 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName('listar_fichas')
     .setDescription('Lista todas as fichas registradas nesta história (canal/categoria).'),
+
   async execute(interaction) {
     await interaction.deferReply({ ephemeral: true });
 
-    const fichasDir = path.join(__dirname, '../fichas');
-    if (!await fs.pathExists(fichasDir)) {
-      return interaction.editReply('Nenhuma ficha encontrada.');
+    const historia = interaction.channel.parent?.name;
+    if (!historia) return interaction.editReply('❌ Não foi possível identificar a história (categoria).');
+
+    const baseFichas = path.join(__dirname, '..', 'fichas');
+    if (!await fs.pathExists(baseFichas)) {
+      return interaction.editReply('❌ Nenhuma ficha registrada até o momento.');
     }
 
     const isMestre = interaction.member.permissions.has(PermissionFlagsBits.ManageGuild);
-    const currentCategory = interaction.channel.parentId;
     const fichas = [];
 
-    const pastas = await fs.readdir(fichasDir);
-    for (const pasta of pastas) {
-      const pastaPath = path.join(fichasDir, pasta);
-      if (!(await fs.stat(pastaPath)).isDirectory()) continue;
+    const mecanicas = await fs.readdir(baseFichas);
+    for (const mecanica of mecanicas) {
+      const mecanicaDir = path.join(baseFichas, mecanica);
+      const jogadores = await fs.readdir(mecanicaDir).catch(() => []);
 
-      const arquivos = await fs.readdir(pastaPath);
-      for (const arquivo of arquivos) {
-        if (!arquivo.endsWith('.json')) continue;
+      for (const jogadorId of jogadores) {
+        const jogadorPath = path.join(mecanicaDir, jogadorId);
+        const arquivos = await fs.readdir(jogadorPath).catch(() => []);
 
-        try {
-          const ficha = await fs.readJson(path.join(pastaPath, arquivo));
-          // só considerar fichas desta categoria
-          if (ficha.historia !== interaction.channel.parent?.name) continue;
+        for (const arquivo of arquivos) {
+          if (!arquivo.endsWith('.json')) continue;
 
-          const status = ficha.vida <= 0 ? '🪦 Morto' : '💚 Vivo';
-          if (isMestre || ficha.autor === interaction.user.id) {
-            const linha = `• **${ficha.nome}** - ${ficha.raca}${ficha.subraca && ficha.subraca !== 'Nenhuma' ? ` (${ficha.subraca})` : ''} - ${ficha.classe} Nível ${ficha.nivel} - ${status}${isMestre ? ` - <@${ficha.autor}>` : ''}`;
-            fichas.push(linha);
+          try {
+            const ficha = await fs.readJson(path.join(jogadorPath, arquivo));
+
+            // Apenas fichas da história atual
+            if (ficha.historia !== historia) continue;
+
+            const status = ficha.vida !== undefined && ficha.vida <= 0 ? '🪦 Morto' : '💚 Vivo';
+            if (isMestre || ficha.autor === interaction.user.id) {
+              const sub = ficha.subraca && ficha.subraca !== 'Nenhuma' ? ` (${ficha.subraca})` : '';
+              const linha = `• **${ficha.nome}** - ${ficha.raca || '?'}${sub} - ${ficha.classe || '?'} Nível ${ficha.nivel || '?'} - ${status}${isMestre ? ` - <@${ficha.autor}>` : ''}`;
+              fichas.push(linha);
+            }
+          } catch (err) {
+            console.warn(`Erro ao ler ficha ${arquivo}:`, err);
           }
-        } catch (err) {
-          console.warn(`❗ Erro ao ler ficha em ${arquivo}:`, err);
         }
       }
     }
 
     if (fichas.length === 0) {
-      return interaction.editReply('Nenhuma ficha encontrada nesta história.');
+      return interaction.editReply('❌ Nenhuma ficha encontrada nesta história.');
     }
 
     return interaction.editReply({

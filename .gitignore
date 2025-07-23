@@ -1,1 +1,9 @@
 .env
+fichas/
+node_modules/
+*.log
+dist/
+build/
+*.sqlite
+*.db
+*.tmp
