@@ -6,28 +6,87 @@
     "canalizar_energia": "Negativa",
     "arma_preferida": "Corrente de espinhos",
     "devotos": ["Qualquer um"],
-    "poderes_concedidos": ["Afinidade com a Tormenta", "Êxtase da Loucura", "Percepção Temporal", "Rejeição Divina"],
-    "obrigacoes_restricoes": "Role 1d6 no início de cena: resultado ímpar fascina o devoto em devaneios, mesmo imune à condição. Violação de obrigações faz perder todos os PM até o próximo dia."  
+    "obrigacoes_restricoes": "Role 1d6 no início de cena: resultado ímpar fascina o devoto em devaneios, mesmo imune à condição. Violação faz perder todos os PM até o próximo dia.",
+    "poderes_concedidos": [
+      {
+        "nome": "Afinidade com a Tormenta",
+        "descricao": "Ignora penalidades ao conjurar magias dentro da Tormenta.",
+        "custo_pm": 0,
+        "alcance": "Pessoal",
+        "duracao": "Passiva"
+      },
+      {
+        "nome": "Êxtase da Loucura",
+        "descricao": "Gasta 2 PM para ganhar vantagem em um ataque ou teste de habilidade, mas fica confuso no turno seguinte.",
+        "custo_pm": 2,
+        "alcance": "Pessoal",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Percepção Temporal",
+        "descricao": "Gasta 1 PM para adiantar ou atrasar levemente a percepção, concedendo +2 CA até o fim da próxima rodada.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Rejeição Divina",
+        "descricao": "Gasta 3 PM para empurrar inimigos em 3 m num cone de 6 m. Fortitude CD Sab reduz.",
+        "custo_pm": 3,
+        "alcance": "6 m",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Allihanna",
     "crencas_objetivos": "Reverenciar seres da natureza, proteger vida selvagem e promover harmonia entre natureza e civilização.",
-    "simbolo_sagrado": "Pequena árvore ou símbolo do animal venerado (para bárbaros).",
+    "simbolo_sagrado": "Pequena árvore ou símbolo do animal venerado.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Bastão ou arma simples natural",
     "devotos": ["Bárbaros", "Druidas"],
-    "poderes_concedidos": [],
-    "obrigacoes_restricoes": "Preservar equilíbrio natural, não destruir flora ou fauna sem propósito."
+    "obrigacoes_restricoes": "Preservar equilíbrio natural; não destruir flora ou fauna sem propósito.",
+    "poderes_concedidos": [
+      {
+        "nome": "Chamado da Floresta",
+        "descricao": "Gasta 2 PM para invocar trepadeiras que prendem um alvo (Fortitude CD Sab reduz).",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Benção Selvagem",
+        "descricao": "Gasta 1 PM para curar 1d8 PV de um aliado tocado.",
+        "custo_pm": 1,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Arsenal",
     "crencas_objetivos": "Exaltar a guerra como meio de provar valor e forjar heróis e armas lendárias.",
-    "simbolo_sagrado": "Martelo ou martelo forjado em chamas.",
+    "simbolo_sagrado": "Martelo forjado em chamas.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Martelo de guerra",
     "devotos": ["Guerreiros", "Cavaleiros"],
-    "poderes_concedidos": ["Forja de Armas", "Bênção da Batalha"],
-    "obrigacoes_restricoes": "Devotos devem proteger honra e valor, jamais desonrar uma batalha justa."  
+    "obrigacoes_restricoes": "Proteger honra e valor; jamais desonrar uma batalha justa.",
+    "poderes_concedidos": [
+      {
+        "nome": "Forja de Armas",
+        "descricao": "Gasta 3 PM para imbuir uma arma próxima com +1 de ataque por 1 cena.",
+        "custo_pm": 3,
+        "alcance": "Toque",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Bênção da Batalha",
+        "descricao": "Gasta 2 PM para conceder +2 em testes de ataque a até três aliados num raio de 6 m.",
+        "custo_pm": 2,
+        "alcance": "6 m",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Azgher",
@@ -36,8 +95,23 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Adaga cerimonial",
     "devotos": ["Eruditos", "Magos"],
-    "poderes_concedidos": ["Palavra Esclarecedora", "Saber Arcano"],
-    "obrigacoes_restricoes": "Registrar descobertas e compartilhar conhecimento; não ocultar verdades essenciais."  
+    "obrigacoes_restricoes": "Registrar descobertas; não ocultar verdades essenciais.",
+    "poderes_concedidos": [
+      {
+        "nome": "Palavra Esclarecedora",
+        "descricao": "Gasta 1 PM para aumentar o CD de uma magia lançada em até 2 pontos.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Saber Arcano",
+        "descricao": "Gasta 2 PM para lançar identificação de objeto ou detectar magia sem componentes.",
+        "custo_pm": 2,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Hyninn",
@@ -46,8 +120,23 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Adaga decorativa",
     "devotos": ["Hynne", "Bardos"],
-    "poderes_concedidos": ["Inspiração Festiva", "Encanto Alegre"],
-    "obrigacoes_restricoes": "Promover festividades regulares; não permitir tristeza nas celebrações."  
+    "obrigacoes_restricoes": "Promover festividades; não permitir tristeza nas celebrações.",
+    "poderes_concedidos": [
+      {
+        "nome": "Inspiração Festiva",
+        "descricao": "Gasta 1 PM para conceder um dado bônus de inspiração a um aliado.",
+        "custo_pm": 1,
+        "alcance": "9 m",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Encanto Alegre",
+        "descricao": "Gasta 2 PM para fascinar até dois alvos (Teste de Vontade CD Car).",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Kallyadranoch",
@@ -55,9 +144,46 @@
     "simbolo_sagrado": "Escamas de cinco cores diferentes.",
     "canalizar_energia": "Negativa",
     "arma_preferida": "Lança dracônica",
-    "devotos": ["Elfos", "Medusas", "Arcanistas", "Cavaleiros", "Guerreiros", "Lutadores", "Nobres"],
-    "poderes_concedidos": ["Aura de Medo", "Escamas Dracônicas", "Presas Primordiais", "Servos do Dragão"],
-    "obrigacoes_restricoes": "Ofertar tesouro igual a 20% da diferença de riqueza ao subir de nível; sacrifícios não permitidos a PJ."
+    "devotos": [
+      "Elfos",
+      "Medusas",
+      "Arcanistas",
+      "Cavaleiros",
+      "Guerreiros",
+      "Lutadores",
+      "Nobres"
+    ],
+    "obrigacoes_restricoes": "Ofertar 20% do tesouro ao subir de nível; sem sacrifícios a PJ.",
+    "poderes_concedidos": [
+      {
+        "nome": "Aura de Medo",
+        "descricao": "Gasta 2 PM para emitir aura de 3 m que assusta inimigos (Fortitude CD Car).",
+        "custo_pm": 2,
+        "alcance": "3 m",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Escamas Dracônicas",
+        "descricao": "Gasta 1 PM para ganhar +2 CA até o fim da próxima rodada.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Presas Primordiais",
+        "descricao": "Gasta 3 PM para adicionar dano de fogo 1d6 em um ataque corpo a corpo.",
+        "custo_pm": 3,
+        "alcance": "Pessoal",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Servos do Dragão",
+        "descricao": "Gasta 4 PM para conjurar servos dracônicos menores que obedecem por 1 cena.",
+        "custo_pm": 4,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Khalmyr",
@@ -65,9 +191,45 @@
     "simbolo_sagrado": "Espada sobreposta a uma balança.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Espada longa",
-    "devotos": ["Aggelus", "Anões", "Cavaleiros", "Guerreiros", "Nobres", "Paladinos"],
-    "poderes_concedidos": ["Coragem Total", "Dom da Verdade", "Espada Justiceira", "Reparar Injustiça"],
-    "obrigacoes_restricoes": "Não recusar pedidos de ajuda de inocentes; obedecer hierarquia eclesiástica; usar apenas itens criados por devotos." 
+    "devotos": [
+      "Aggelus",
+      "Anões",
+      "Cavaleiros",
+      "Guerreiros",
+      "Nobres",
+      "Paladinos"
+    ],
+    "obrigacoes_restricoes": "Não recusar inocentes; obedecer hierarquia; usar itens devotos.",
+    "poderes_concedidos": [
+      {
+        "nome": "Coragem Total",
+        "descricao": "Gasta 1 PM para imunidade a medo até o fim da cena.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Dom da Verdade",
+        "descricao": "Gasta 2 PM para forçar um alvo a falar a verdade num minuto.",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "1 minuto"
+      },
+      {
+        "nome": "Espada Justiceira",
+        "descricao": "Gasta 3 PM para invocar espada divina que causa 2d8 de dano radiante.",
+        "custo_pm": 3,
+        "alcance": "Pessoal",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Reparar Injustiça",
+        "descricao": "Gasta 4 PM para curar 4d6 PV em até dois aliados tocados.",
+        "custo_pm": 4,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Lena",
@@ -76,18 +238,48 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Cajado de cura",
     "devotos": ["Clérigos", "Curandeiros"],
-    "poderes_concedidos": ["Bênção Vital", "Toque Curativo"],
-    "obrigacoes_restricoes": "Curar ferimentos sempre que possível; não causar sofrimento deliberado."  
+    "obrigacoes_restricoes": "Curar sempre que possível; não causar sofrimento.",
+    "poderes_concedidos": [
+      {
+        "nome": "Bênção Vital",
+        "descricao": "Gasta 1 PM para curar 1d8 PV em um alvo tocado.",
+        "custo_pm": 1,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Toque Curativo",
+        "descricao": "Gasta 2 PM para curar 3d8 PV em até dois aliados.",
+        "custo_pm": 2,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Lin-Wu",
     "crencas_objetivos": "Equilíbrio e disciplina espiritual através de artes marciais e meditação.",
-    "simbolo_sagrado": "Símbolo yin-yang entrelaçado com dragão e serpente.",
+    "simbolo_sagrado": "Yin-yang com dragão e serpente.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Nanquim (cajado curto)",
     "devotos": ["Lutadores", "Samurais"],
-    "poderes_concedidos": ["Forma de Tigre", "Golpe Harmonizado"],
-    "obrigacoes_restricoes": "Praticar meditação diária; não recorrer a armas de fogo."  
+    "obrigacoes_restricoes": "Meditar diariamente; não usar armas de fogo.",
+    "poderes_concedidos": [
+      {
+        "nome": "Forma de Tigre",
+        "descricao": "Gasta 2 PM para ganhar +2 em Força e Velocidade por 1 cena.",
+        "custo_pm": 2,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Golpe Harmonizado",
+        "descricao": "Gasta 1 PM para desarmar um alvo num ataque (Fortitude CD Sab reduz).",
+        "custo_pm": 1,
+        "alcance": "Alcance da arma",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Marah",
@@ -96,8 +288,23 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Bastão leve",
     "devotos": ["Humanos", "Clérigos", "Druidas"],
-    "poderes_concedidos": ["Proteção Compassiva", "Empatia Divina"],
-    "obrigacoes_restricoes": "Sem abandonar os mais fracos; realizar atos de caridade regularmente."  
+    "obrigacoes_restricoes": "Nunca abandonar fracos; caridade regular.",
+    "poderes_concedidos": [
+      {
+        "nome": "Proteção Compassiva",
+        "descricao": "Gasta 2 PM para criar escudo de energia; concede +2 CA a um aliado.",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Empatia Divina",
+        "descricao": "Gasta 3 PM para trocar PV com um aliado tocado (1d6 por PM gasto).",
+        "custo_pm": 3,
+        "alcance": "Toque",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Megalokk",
@@ -106,8 +313,23 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Arma de fogo leve",
     "devotos": ["Inventores", "Técnicos"],
-    "poderes_concedidos": ["Engenharia Divina", "Criar Dispositivo"],
-    "obrigacoes_restricoes": "Experimentar novas invenções; não causar destruição indiscriminada."  
+    "obrigacoes_restricoes": "Experimentar novas invenções; não destruir indiscriminadamente.",
+    "poderes_concedidos": [
+      {
+        "nome": "Engenharia Divina",
+        "descricao": "Gasta 1 PM para reparar 1d8 de dano em objetos próximos.",
+        "custo_pm": 1,
+        "alcance": "6 m",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Criar Dispositivo",
+        "descricao": "Gasta 4 PM para forjar um dispositivo simples em 1 cena.",
+        "custo_pm": 4,
+        "alcance": "Toque",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Nimb",
@@ -116,18 +338,48 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Tridente ou lança aquática",
     "devotos": ["Cavaleiros", "Druidas"],
-    "poderes_concedidos": ["Tempestade Invocada", "Chuva Pura"],
-    "obrigacoes_restricoes": "Manter equilíbrio climático; não provocar tempestades destrutivas sem razão."  
+    "obrigacoes_restricoes": "Manter equilíbrio climático; não provocar tempestades destrutivas sem razão.",
+    "poderes_concedidos": [
+      {
+        "nome": "Tempestade Invocada",
+        "descricao": "Gasta 3 PM para criar chuva forte e ventania em um raio de 6 m.",
+        "custo_pm": 3,
+        "alcance": "6 m",
+        "duracao": "1 cena"
+      },
+      {
+        "nome": "Chuva Pura",
+        "descricao": "Gasta 2 PM para purificar água e remover efeitos tóxicos em até 3 m³.",
+        "custo_pm": 2,
+        "alcance": "3 m³",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Oceano",
     "crencas_objetivos": "Maremotos e viagens marítimas, guiando navegantes pelos mares.",
-    "simbolo_sagrado": "Concha spiral poderosa.",
+    "simbolo_sagrado": "Concha espiral poderosa.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Tridente naval",
     "devotos": ["Marujos", "Bucaneiros", "Druidas"],
-    "poderes_concedidos": ["Navegação Celestial", "Controlar Correntes"],
-    "obrigacoes_restricoes": "Proteger vidas no mar; não causar naufrágios deliberados."  
+    "obrigacoes_restricoes": "Proteger vidas no mar; não causar naufrágios deliberados.",
+    "poderes_concedidos": [
+      {
+        "nome": "Navegação Celestial",
+        "descricao": "Gasta 1 PM para obter orientação perfeita por 1 dia.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "1 dia"
+      },
+      {
+        "nome": "Controlar Correntes",
+        "descricao": "Gasta 3 PM para alterar correntes em 9 m, afetando embarcações e criaturas aquáticas.",
+        "custo_pm": 3,
+        "alcance": "9 m",
+        "duracao": "1 cena"
+      }
+    ]
   },
   {
     "nome": "Sszzaas",
@@ -136,8 +388,23 @@
     "canalizar_energia": "Negativa",
     "arma_preferida": "Chicote mágico",
     "devotos": ["Clérigos", "Magos"],
-    "poderes_concedidos": ["Dominação Mental", "Sussurros Sombrios"],
-    "obrigacoes_restricoes": "Realizar sacrifícios periódicos; manter segredo sobre cultos."  
+    "obrigacoes_restricoes": "Realizar sacrifícios periódicos; manter segredo sobre cultos.",
+    "poderes_concedidos": [
+      {
+        "nome": "Dominação Mental",
+        "descricao": "Gasta 4 PM para controlar um alvo por até 1 rodada (Fortitude CD Sab).",
+        "custo_pm": 4,
+        "alcance": "9 m",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Sussurros Sombrios",
+        "descricao": "Gasta 2 PM para implantar dúvida num inimigo, concedendo desvantagem em ataque.",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "1 cena"
+      }
+    ]
   },
   {
     "nome": "Tanna-Toh",
@@ -146,8 +413,23 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Adaga ornamentada",
     "devotos": ["Artistas", "Bardos"],
-    "poderes_concedidos": ["Obra-prima Viva", "Inspiração Divina"],
-    "obrigacoes_restricoes": "Criar ao menos uma obra de arte por lua; não depreciar outras artes."  
+    "obrigacoes_restricoes": "Criar ao menos uma obra de arte por lua; não depreciar outras artes.",
+    "poderes_concedidos": [
+      {
+        "nome": "Obra‑prima Viva",
+        "descricao": "Gasta 3 PM para animar uma pintura ou escultura por 1 cena.",
+        "custo_pm": 3,
+        "alcance": "Toque",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Inspiração Divina",
+        "descricao": "Gasta 1 PM para dar +2 em testes criativos (arte, música, atuação).",
+        "custo_pm": 1,
+        "alcance": "9 m",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Tenebra",
@@ -156,8 +438,23 @@
     "canalizar_energia": "Negativa",
     "arma_preferida": "Adaga envenenada",
     "devotos": ["Assassinos", "Ladinos", "Clérigos"],
-    "poderes_concedidos": ["Sombra Oculta", "Visão das Trevas"],
-    "obrigacoes_restricoes": "Operar na escuridão; não permitir que luz alcance seus rituais."  
+    "obrigacoes_restricoes": "Operar na escuridão; não permitir que luz alcance rituais.",
+    "poderes_concedidos": [
+      {
+        "nome": "Sombra Oculta",
+        "descricao": "Gasta 2 PM para ficar invisível enquanto em sombra por 1 rodada.",
+        "custo_pm": 2,
+        "alcance": "Pessoal",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Visão das Trevas",
+        "descricao": "Gasta 1 PM para enxergar perfeitamente em escuridão total por 1 cena.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Thwor",
@@ -166,18 +463,48 @@
     "canalizar_energia": "Negativa",
     "arma_preferida": "Machado de batalha",
     "devotos": ["Bárbaros", "Guerreiros"],
-    "poderes_concedidos": ["Fúria Aniquiladora", "Impacto Sagrado"],
-    "obrigacoes_restricoes": "Destruir apenas o necessário; renovações após devastação."  
+    "obrigacoes_restricoes": "Destruir apenas o necessário; renovações após devastação.",
+    "poderes_concedidos": [
+      {
+        "nome": "Fúria Aniquiladora",
+        "descricao": "Gasta 3 PM para adicionar +2d6 de dano em um ataque corpo a corpo.",
+        "custo_pm": 3,
+        "alcance": "Pessoal",
+        "duracao": "Instantânea"
+      },
+      {
+        "nome": "Impacto Sagrado",
+        "descricao": "Gasta 2 PM para gerar onda de choque de 3 m (Fortitude CD Car reduz).",
+        "custo_pm": 2,
+        "alcance": "3 m",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Thyatis",
     "crencas_objetivos": "Valor, honra militar e sinergia entre guerreiros em campo.",
-    "simbolo_sagrado": "Porta-estandarte de guerra.",
+    "simbolo_sagrado": "Porta‑estandarte de guerra.",
     "canalizar_energia": "Positiva",
     "arma_preferida": "Espada longa com brasão",
     "devotos": ["Soldados", "Paladinos"],
-    "poderes_concedidos": ["Disciplina Marcial", "Convocação de Tropas"],
-    "obrigacoes_restricoes": "Respeitar hierarquia e códigos militares; não desertar em batalha."  
+    "obrigacoes_restricoes": "Respeitar hierarquia; não desertar em batalha.",
+    "poderes_concedidos": [
+      {
+        "nome": "Disciplina Marcial",
+        "descricao": "Gasta 1 PM para conceder formação defensiva: aliados no raio ganham +1 CA.",
+        "custo_pm": 1,
+        "alcance": "6 m",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Convocação de Tropas",
+        "descricao": "Gasta 4 PM para invocar 1d4 soldados espectrais por 1 cena.",
+        "custo_pm": 4,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      }
+    ]
   },
   {
     "nome": "Valkaria",
@@ -186,8 +513,37 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Mangual",
     "devotos": ["Aventureiros de todas as classes"],
-    "poderes_concedidos": ["Almejar o Impossível", "Armas da Ambição", "Coragem Total", "Liberdade Divina"],
-    "obrigacoes_restricoes": "Não fixar moradia por mais de 2d10+10 dias em um lugar; não casar ou formar união estável."
+    "obrigacoes_restricoes": "Não fixar moradia por mais de 2d10+10 dias; não casar.",
+    "poderes_concedidos": [
+      {
+        "nome": "Almejar o Impossível",
+        "descricao": "Gasta 2 PM para obter vantagem em um teste de habilidade ou ataque.",
+        "custo_pm": 2,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Armas da Ambição",
+        "descricao": "Gasta 1 PM para imbuir uma arma com +1 de ataque por 1 rodada.",
+        "custo_pm": 1,
+        "alcance": "Toque",
+        "duracao": "1 rodada"
+      },
+      {
+        "nome": "Coragem Total",
+        "descricao": "Gasta 1 PM para imunidade a medo até o fim da cena.",
+        "custo_pm": 1,
+        "alcance": "Pessoal",
+        "duracao": "Cena"
+      },
+      {
+        "nome": "Liberdade Divina",
+        "descricao": "Gasta 3 PM para teleportar 6 m, deixando explosão de vento (Fortitude CD Car reduz).",
+        "custo_pm": 3,
+        "alcance": "6 m",
+        "duracao": "Instantânea"
+      }
+    ]
   },
   {
     "nome": "Wynna",
@@ -196,6 +552,22 @@
     "canalizar_energia": "Positiva",
     "arma_preferida": "Cetro encantado",
     "devotos": ["Bardos", "Feéricos"],
-    "poderes_concedidos": ["Encanto dos Flo'"]
+    "obrigacoes_restricoes": "Não pode evocar armas espirituais.",
+    "poderes_concedidos": [
+      {
+        "nome": "Bênção do Mana",
+        "descricao": "Você recebe +1 PM a cada nível ímpar.",
+        "custo_pm": 0,
+        "alcance": "Pessoal",
+        "duracao": "Permanente"
+      },
+      {
+        "nome": "Encanto dos Flo’",
+        "descricao": "Gasta 2 PM para fascinar um alvo em 9 m (Teste de Vontade CD Car).",
+        "custo_pm": 2,
+        "alcance": "9 m",
+        "duracao": "Cena"
+      }
+    ]
   }
 ]
