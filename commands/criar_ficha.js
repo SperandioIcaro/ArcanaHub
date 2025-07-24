@@ -855,7 +855,7 @@ module.exports = {
       atributos: { FOR: 0, DES: 0, CON: 0, INT: 0, SAB: 0, CAR: 0 },
       pontosRestantes: 30,
       inventario: [],
-      carteira: { TO: 0, TP: 0, TC: 0 },
+      carteira: { TO: 100, TP: 0, TC: 0 },
       equipados: {
         arma_principal: null,
         arma_secundaria: null,
@@ -1156,7 +1156,8 @@ module.exports = {
       // Paginação para pericias, habilidades e equipamentos
       if ((act === "mais" || act === "menos") && param.startsWith("page")) {
         const [_, key] = interaction.customId.split(":");
-        const pageKey = `pagina_${key}`;
+        // para habilidades, o campo no data é pagina_hab, não pagina_habilidades
+        const pageKey = key === "habilidades" ? "pagina_hab" : `pagina_${key}`;
 
         if (key === "pericias") {
           const all = mec.PERICIAS.filter(
@@ -1184,20 +1185,22 @@ module.exports = {
       }
 
       // Remoção de item de lista (perícias, habilidades, equipamentos)
-      if (act === "remove") {
-        const [, type, item] = interaction.customId.split(":");
-        if (type === "pericias") {
-          data.pericias = data.pericias.filter((x) => x !== item);
-          return mostrarPericias(interaction, data);
+      if (interaction.isButton()) {
+        const [act, type, item] = interaction.customId.split(":");
+
+        if (act === "remove") {
+          if (type === "pericias") {
+            // remove do array de perícias e re-renderiza
+            data.pericias = data.pericias.filter((x) => x !== item);
+            return mostrarPericias(interaction, data);
+          }
+
+          if (type === "habilidades") {
+            // remove do array de habilidades e re-renderiza
+            data.habilidades = data.habilidades.filter((x) => x !== item);
+            return mostrarHabilidades(interaction, data);
+          }
         }
-        if (type === "habilidades") {
-          data.habilidades = data.habilidades.filter((x) => x !== item);
-          return mostrarHabilidades(interaction, data);
-        }
-        if (Array.isArray(data[type])) {
-          data[type] = data[type].filter((x) => x !== item);
-        }
-        return steps[step].render(interaction, data);
       }
     }
 
