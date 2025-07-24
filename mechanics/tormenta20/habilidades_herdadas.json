@@ -1,0 +1,366 @@
+[
+  {
+    "nome": "Visão no Escuro",
+    "descricao": "Enxerga 18m na penumbra e 9m na escuridão total como se fosse luz. Em escuridão total, enxerga apenas em preto e branco.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Resistência à Veneno +2",
+    "descricao": "Recebe +2 em testes de resistência contra efeitos de veneno.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Proficiência com Machado de Guerra e Martelo de Guerra",
+    "descricao": "Pode usar machados de guerra e martelos de guerra sem sofrer penalidades.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Conexão com a Natureza",
+    "descricao": "Consegue falar com animais e plantas livremente.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Resistência a Doenças +2",
+    "descricao": "Recebe +2 em testes de resistência contra doenças.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Sentidos Aguçados",
+    "descricao": "Recebe +2 em testes de Investigação e Percepção.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Reflexos Élfico",
+    "descricao": "Recebe +2 em testes de Reflexos.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Escalada Ágil",
+    "descricao": "Move-se pelo terreno difícil sem sofrer penalidades e ignora penalidades por escalar.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Olhos Aguçados",
+    "descricao": "Recebe +2 em testes de Investigação.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Deformidade",
+    "descricao": "Ganha um poder da Tormenta a sua escolha (conta como Poder Geral).",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Regeneração Leve",
+    "descricao": "Recupera 1 PV por rodada quando está ferido (abaixo de metade dos PV máximos).",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Contínua"
+  },
+  {
+    "nome": "Investida",
+    "descricao": "Recebe +2 no dano em ataques de investida.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Chifradas",
+    "descricao": "Pode realizar um ataque natural com os chifres (dano 1d6, crítico x2).",
+    "custo_pm": null,
+    "alcance": "Corpo a Corpo",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Alterar Aparência",
+    "descricao": "Pode mudar sua aparência física como uma ação livre (magia básica).",
+    "custo_pm": 1,
+    "alcance": "Pessoal",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Resistência Elemental +2",
+    "descricao": "Recebe +2 em testes de resistência contra efeitos de fogo, eletricidade, frio ou ácido.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Talento Extra",
+    "descricao": "Recebe um Poder Geral adicional ao criar o personagem.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Variação Cultural",
+    "descricao": "Recebe uma perícia treinada adicional ao criar o personagem.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Empatia Hynne",
+    "descricao": "Recebe +2 em testes de Diplomacia.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Sorte Hynne",
+    "descricao": "Recebe 1 PM adicional no início de cada combate.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Afinidade Arcana",
+    "descricao": "Recebe +2 em testes de Misticismo.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Precisão Cibernética",
+    "descricao": "Recebe +2 em testes de Pontaria.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Olhar Petrificante",
+    "descricao": "Pode tentar petrificar um alvo com uma ação padrão (ataque de paralisação, CD Vontade).",
+    "custo_pm": 2,
+    "alcance": "9m",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Imunidade a Doenças",
+    "descricao": "É imune a todos os efeitos de doenças.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Resistência a Frio +2",
+    "descricao": "Recebe +2 em testes de resistência contra efeitos de frio.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Toque Flamejante",
+    "descricao": "Pode canalizar fogo em ataques corpo a corpo (dano de fogo adicional igual ao nível, ataque evolutivo).",
+    "custo_pm": 1,
+    "alcance": "Toque",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Cauda Agressiva",
+    "descricao": "Pode realizar um ataque natural com a cauda (dano 1d6, crítico x2).",
+    "custo_pm": null,
+    "alcance": "Corpo a Corpo",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Benção Menor",
+    "descricao": "Pode gastar 1 PM para conceder +1 em um teste de um aliado em alcance curto.",
+    "custo_pm": 1,
+    "alcance": "Curto",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Toque Macabro",
+    "descricao": "Pode gastar 1 PM para causar 1d6 pontos de dano de treva com um toque.",
+    "custo_pm": 1,
+    "alcance": "Toque",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Conhecimento de Terreno",
+    "descricao": "Recebe +2 em testes de Sobrevivência e não sofre penalidades por terreno difícil.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Contato Nobre",
+    "descricao": "Uma vez por dia, pode obter ajuda de um NPC nobre relevante para a situação.",
+    "custo_pm": null,
+    "alcance": "Cidade/Reino",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Inspiração Improvisada",
+    "descricao": "Gasta 1 PM para conceder +2 em um teste de perícia de um aliado em alcance curto.",
+    "custo_pm": 1,
+    "alcance": "Curto",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Visão Espiritual",
+    "descricao": "Pode ver criaturas etéreas e espíritos naturalmente.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Rosto Inocente",
+    "descricao": "Recebe +2 em testes de Enganação e atuação.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Contato do Submundo",
+    "descricao": "Pode obter informações ou serviços ilegais com facilidade (CD variável).",
+    "custo_pm": null,
+    "alcance": "Cidade",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Preparar Remédio",
+    "descricao": "Pode criar antídotos, antivenenos e medicamentos com testes de Ofício (Cura).",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Memória Excepcional",
+    "descricao": "Recebe +2 em testes de Conhecimento e pode recordar informações com precisão fotográfica.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Força Bruta",
+    "descricao": "Pode usar Força no lugar de Destreza em testes de Atletismo.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Idioma Exótico",
+    "descricao": "Aprende um idioma raro ou ancestral à sua escolha.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Ferramentas Especiais",
+    "descricao": "Possui ferramentas que concedem +2 em testes de Ofício específico.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Ritual Antigo",
+    "descricao": "Conhece um ritual místico menor (efeito equivalente a uma magia de 1º círculo).",
+    "custo_pm": 1,
+    "alcance": "Variável",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Instinto de Sobrevivência",
+    "descricao": "Recebe +2 em testes de Furtividade e Sobrevivência em ambientes selvagens.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Braços do Mar",
+    "descricao": "Nada com velocidade normal e recebe +2 em testes de Navegação.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Negociação Esperta",
+    "descricao": "Recebe +2 em testes de Comércio e Diplomacia para barganhar.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Passos Infalíveis",
+    "descricao": "Ignora terreno difícil e não deixa rastros em ambientes naturais.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Premonição",
+    "descricao": "Uma vez por dia, pode rerolar um teste recém realizado.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Instantânea"
+  },
+  {
+    "nome": "Músculos de Aço",
+    "descricao": "Recebe +2 em testes de Fortitude e Atletismo.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Fúria",
+    "descricao": "Gasta 1 PM para entrar em estado de fúria (+2 em FOR e +2 em testes de resistência, mas não pode usar habilidades que exijam concentração).",
+    "custo_pm": 1,
+    "alcance": "Pessoal",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Marca da Presa",
+    "descricao": "Como ação padrão, marca um alvo em alcance curto. Recebe +2 em ataques e dano contra a criatura marcada.",
+    "custo_pm": 1,
+    "alcance": "Curto",
+    "duracao": "Cena"
+  },
+  {
+    "nome": "Rastreador",
+    "descricao": "Recebe +2 em testes de Sobrevivência para rastrear e identificar criaturas.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  },
+  {
+    "nome": "Devoto Fiel",
+    "descricao": "Pode lançar magias divinas de 1º círculo (escolhe 3 magias da lista de divinas).",
+    "custo_pm": "Variável",
+    "alcance": "Variável",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Engenhosidade",
+    "descricao": "Pode criar itens alquímicos e tecnológicos com testes de Ofício.",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Variável"
+  },
+  {
+    "nome": "Protótipo",
+    "descricao": "Começa com um item tecnológico único (determinado pelo mestre).",
+    "custo_pm": null,
+    "alcance": "Pessoal",
+    "duracao": "Permanente"
+  }
+]
