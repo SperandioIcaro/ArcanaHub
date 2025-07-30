@@ -11,80 +11,103 @@ const { experienciaPorNivel } = require("../mechanics/tormenta20/index.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ver_ficha")
-    .setDescription("Visualiza uma das fichas de um jogador (somente mestres).")
-    .addUserOption((opt) =>
-      opt
-        .setName("jogador")
-        .setDescription("Jogador cuja ficha será visualizada")
-        .setRequired(true)
-    ),
+    .setDescription("Visualiza ficha(s) da campanha atual."),
 
-  // === AQUI RESTAURAMOS O EXECUTE ===
   async execute(interaction) {
-    const mestreId = interaction.user.id;
-    const roleName = `mestre${mestreId}`;
-    const mestreRole = interaction.guild.roles.cache.find(
-      (r) => r.name === roleName
+    const guild = interaction.guild;
+    const userId = interaction.user.id;
+    const member = interaction.member;
+    const categoryId = interaction.channel.parentId;
+    const baseDir = path.join(__dirname, "../fichas/tormenta20");
+    const masterRole = guild.roles.cache.find(
+      (r) => r.name === `mestre${userId}`
     );
-    if (!mestreRole || !interaction.member.roles.cache.has(mestreRole.id)) {
+    const isMaster = masterRole && member.roles.cache.has(masterRole.id);
+
+    let options = [];
+    if (isMaster) {
+      // mestre vê todas as fichas da campanha
+      const userFolders = fs.existsSync(baseDir)
+        ? await fs.readdir(baseDir)
+        : [];
+      for (const uid of userFolders) {
+        const dir = path.join(baseDir, uid);
+        if (!fs.lstatSync(dir).isDirectory()) continue;
+        const files = await fs.readdir(dir);
+        for (const f of files.filter((f) => f.endsWith(".json"))) {
+          // opcionalmente checar campanha dentro do JSON, mas por enquanto lista todos
+          const nome = path.basename(f, ".json").replace(/-/g, " ");
+          const memberObj = await guild.members.fetch(uid).catch(() => null);
+          const username = memberObj ? memberObj.user.username : uid;
+          options.push({
+            label: `${
+              nome.charAt(0).toUpperCase() + nome.slice(1)
+            } (${username})`,
+            value: `${uid}:${f}`,
+          });
+        }
+      }
+    } else {
+      // jogador vê só suas próprias fichas
+      const dir = path.join(baseDir, userId);
+      if (fs.existsSync(dir)) {
+        const files = await fs.readdir(dir);
+        for (const f of files.filter((f) => f.endsWith(".json"))) {
+          const nome = path.basename(f, ".json").replace(/-/g, " ");
+          options.push({
+            label: nome.charAt(0).toUpperCase() + nome.slice(1),
+            value: `${userId}:${f}`,
+          });
+        }
+      }
+    }
+
+    if (options.length === 0) {
       return interaction.reply({
-        content: "❌ Você não tem permissão para usar este comando.",
+        content: isMaster
+          ? "❌ Não há fichas nesta campanha."
+          : "❌ Você não tem fichas nesta campanha.",
         ephemeral: true,
       });
     }
-
-    const alvo = interaction.options.getUser("jogador");
-    const dir = path.join(__dirname, `../fichas/tormenta20/${alvo.id}`);
-    if (!fs.existsSync(dir)) {
-      return interaction.reply({
-        content: "❌ Este jogador ainda não tem nenhuma ficha criada.",
-        ephemeral: true,
-      });
-    }
-
-    const arquivos = await fs.readdir(dir);
-    const opcoes = arquivos
-      .filter((f) => f.endsWith(".json"))
-      .map((f) => {
-        const nomeFicha = path.basename(f, ".json").replace(/-/g, " ");
-        return {
-          label: nomeFicha[0].toUpperCase() + nomeFicha.slice(1),
-          value: f,
-        };
-      });
 
     const select = new StringSelectMenuBuilder()
-      .setCustomId(`ver_ficha_selecionar:${alvo.id}`)
+      .setCustomId(`ver_ficha_selecionar:${categoryId}`)
       .setPlaceholder("Selecione a ficha para visualizar")
-      .addOptions(opcoes);
+      .addOptions(options);
 
     await interaction.reply({
-      content: `👤 Fichas de **${alvo.username}**:\nSelecione uma para visualizar abaixo:`,
+      content: isMaster
+        ? `📜 Fichas da campanha:`
+        : `🗂️ Suas fichas nesta campanha:`,
       components: [new ActionRowBuilder().addComponents(select)],
       ephemeral: true,
     });
   },
 
-  // === HANDLE COMPONENT COM CÁLCULO DE CA ===
   async handleComponent(interaction) {
     if (!interaction.isStringSelectMenu()) return;
-    const [base, jogadorId] = interaction.customId.split(":");
+    const [base, categoryId] = interaction.customId.split(":");
     if (base !== "ver_ficha_selecionar") return;
 
-    // Revalida permissão de mestre
-    const mestreId = interaction.user.id;
-    const roleName = `mestre${mestreId}`;
-    const mestreRole = interaction.guild.roles.cache.find(
-      (r) => r.name === roleName
+    const value = interaction.values[0]; // "uid:filename"
+    const [jogadorId, fichaFile] = value.split(":");
+    const userId = interaction.user.id;
+    const guild = interaction.guild;
+    const masterRole = guild.roles.cache.find(
+      (r) => r.name === `mestre${userId}`
     );
-    if (!mestreRole || !interaction.member.roles.cache.has(mestreRole.id)) {
+    const isMaster =
+      masterRole && interaction.member.roles.cache.has(masterRole.id);
+
+    // valida acesso
+    if (!isMaster && jogadorId !== userId) {
       return interaction.reply({
-        content: "❌ Você não tem permissão para visualizar essa ficha.",
+        content: "❌ Você não pode visualizar essa ficha.",
         ephemeral: true,
       });
     }
 
-    const fichaFile = interaction.values[0];
     const fichaPath = path.join(
       __dirname,
       `../fichas/tormenta20/${jogadorId}/${fichaFile}`
@@ -98,11 +121,8 @@ module.exports = {
     }
 
     const ficha = await fs.readJson(fichaPath);
-
-    // Carrega mecânica para buscar dados de equipamentos
     const mec = require("../mechanics/tormenta20/index.js");
 
-    // Extrai campos
     const eq = ficha.equipados || {
       arma_principal: null,
       arma_secundaria: null,
@@ -115,20 +135,13 @@ module.exports = {
       TP: ficha.carteira?.TP ?? 0,
       TC: ficha.carteira?.TC ?? 0,
     };
-
-    // 1) Modificador de Destreza
     const modDES = Math.floor((ficha.atributos.DES - 10) / 2);
-
-    // 2) Bônus da armadura equipada (campo `bonus_ca` no JSON)
     let bonusArmadura = 0;
     if (eq.armadura) {
       const armObj = mec.EQUIPAMENTOS.find((e) => e.nome === eq.armadura) || {};
       bonusArmadura = armObj.bonus_ca || 0;
     }
-
-    // 3) Cálculo de CA
     const valorCA = 10 + modDES + bonusArmadura;
-
     const nivel = ficha.nivel || 1;
     const xpMaximo =
       experienciaPorNivel[nivel + 1] ?? experienciaPorNivel[nivel] ?? 0;
@@ -170,7 +183,7 @@ module.exports = {
         },
         {
           name: "🛡️ CA",
-          value: `${valorCA} (10 + ${
+          value: `${valorCA} (10 ${
             modDES >= 0 ? "+" : ""
           }${modDES} Des + ${bonusArmadura} Arm)`,
           inline: true,
@@ -209,7 +222,7 @@ module.exports = {
           name: "🗡️ Equipados",
           value: [
             `• Arma Principal: ${eq.arma_principal || "Nada"}`,
-            `• Arma Secundária: ${eq.arma_secundaria || "Nada"}`,
+            `• Arma Secundária: ${eq.arma_secondary || "Nada"}`,
             `• Armadura: ${eq.armadura || "Nada"} (+${bonusArmadura})`,
             ...(eq.outros.length ? [`• Outros: ${eq.outros.join(", ")}`] : []),
           ].join("\n"),
@@ -222,11 +235,12 @@ module.exports = {
         }
       )
       .setFooter({
-        text: `Visualizado por mestre ${interaction.user.username}`,
+        text: isMaster
+          ? `Visualizado pelo mestre ${interaction.user.username}`
+          : `Visualizado por ${interaction.user.username}`,
       });
 
     await interaction.update({
-      content: "",
       embeds: [embed],
       components: [],
       ephemeral: true,

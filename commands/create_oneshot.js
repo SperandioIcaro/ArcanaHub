@@ -1,4 +1,3 @@
-// commands/create_oneshot.js
 const ICONS = ["🔥", "🛡️", "⚔️", "🧙", "🐉", "🌌", "💀", "🏹", "🗺️", "🔮"];
 const fs = require("fs");
 const path = require("path");
@@ -153,8 +152,8 @@ module.exports = {
     collector.on("collect", async (i) => {
       if (i.customId !== `join_oneshot_${category.id}`) return;
 
-      // Desabilita/remova o botão
-      await i.update({ components: [] });
+      // Apenas confirma que recebi o clique, sem mexer no botão
+      await i.deferUpdate();
 
       const isMaster = i.user.id === userId;
       const playerRoleName = `jogador${i.user.id}_${category.id}`;
@@ -177,13 +176,19 @@ module.exports = {
         });
         await i.member.roles.add(playerRole);
         guild.channels.cache
-          .filter((c) => c.parentId === category.id)
+          .filter(
+            (c) =>
+              c.parentId === category.id &&
+              // pula o canal npcs-mobs para jogadores
+              c.name !== "npcs-mobs"
+          )
           .forEach((c) => {
             c.permissionOverwrites.edit(playerRole, {
               ViewChannel: true,
               SendMessages: c.type === ChannelType.GuildText,
             });
           });
+
         await i.followUp({
           content: "🎉 Bem-vindo à história!",
           ephemeral: true,
